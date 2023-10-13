@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { CardTitle, CardDescription, CardContent, Card } from "@/components/ui/card"
+import { CardTitle, CardDescription, CardContent, Card } from "./components/ui/card"
 
 const yourName = ""
 // const yourWorkEmail = "diggory.rycroftzzz@vercel.com";
@@ -53,7 +53,7 @@ export default async function Home() {
             <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           
             <h1>Welcome!  This is a starting point for your personal Vercelian info page.
-            Start by <a href="" class="underline text-blue-800">copying this Template</a>. <br />Then, insert <code className="font-mono font-bold">yourName</code> and <code className="font-mono font-bold">yourWorkEmail</code> in the <code className="font-mono font-bold">app/page.tsx</code> file on Github and Commit your changes.
+            Start by <a href="" className="underline text-blue-800">copying this Template</a>. <br />Then, insert <code className="font-mono font-bold">yourName</code> and <code className="font-mono font-bold">yourWorkEmail</code> in the <code className="font-mono font-bold">app/page.tsx</code> file on Github and Commit your changes.
             </h1>
           </p>
             
@@ -61,25 +61,27 @@ export default async function Home() {
         ) : profileData === 'not-found' ? (
           <h1>Profile not found! Are you sure {yourWorkEmail} is your correct work email?</h1>
         ) : (
-          <div class="text-center flex py-4 px-4 bg-slate-100 rounded-lg border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-            <div class="flex-auto min-w-fit">
+          <div className="text-center flex py-4 px-4 bg-slate-100 rounded-lg border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+            <div className="flex-auto min-w-fit">
               {profileData.photoUploaded ? (
                     <Image 
                     src={profileData.photoUrl}
+                    alt="BambooHR profile picture of user"
                     width={150}
                     height={200}
-                    class="rounded-full outline outline-4 outline-slate-500" />
+                    className="rounded-full outline outline-4 outline-slate-500" />
                   ) : (
                     <Image 
                     src="/vercel.png"
                     width={120}
                     height={100}
-                    class="outline-2 rounded-full outline-black self-end pr-5" />
+                    alt="Placeholder picture for user without profile picture uploaded"
+                    className="outline-2 rounded-full outline-black self-end pr-5" />
                   )}
             </div>
-            <div class="flex-auto min-w-fit ml-6 text-left">
-                <h1 class="text-3xl">
-                Welcome to <span class="font-semibold text-emerald-600">{profileData.preferredName}'s</span> Vercelian profile page,<br /> powered by
+            <div className="flex-auto min-w-fit ml-6 text-left">
+                <h1 className="text-3xl">
+                Welcome to <span className="font-semibold text-emerald-600">{profileData.preferredName}&apos;s</span> Vercelian profile page,<br /> powered by
                 <Image
                   className="inline dark:drop-shadow-[0_0_0.3rem_#ffffff70] mx-2 my-2 align-middle dark:invert"
                   src="/next.svg"
@@ -97,17 +99,17 @@ export default async function Home() {
                 priority
               />.
                 </h1>
-                <p class="text-md pt-3">
-                {profileData.preferredName} is a <span class="font-bold">{profileData.jobTitle}</span> in the {profileData.division} org, <br />working in <a href={'https://en.wikipedia.org/wiki/'+profileData.location.replace(" - Work From Home","")} class="underline text-blue-600 italic">{profileData.location.replace(" - Work From Home","")}.</a>
+                <p className="text-md pt-3">
+                {profileData.preferredName} is a <span className="font-bold">{profileData.jobTitle}</span> in the {profileData.division} org, <br />working in <a href={'https://en.wikipedia.org/wiki/'+profileData.location.replace(" - Work From Home","")} className="underline text-blue-600 italic">{profileData.location.replace(" - Work From Home","")}.</a>
                 </p>
-                <div class="grid grid-cols-2 w-14 gap-3">
+                <div className="grid grid-cols-2 w-14 gap-3">
                   <a href={"https://www.google.com/search?q="+profileData.preferredName+"+"+profileData.lastName+"+vercel"}>
                     <Image 
                     src="/google.png"
                     alt="Google search"
                     width={20}
                     height={80}
-                    class="pt-3"
+                    className="pt-3"
                   />
                   </a>
                   <a href={"https://github.com/search?q="+profileData.preferredName+"+"+profileData.lastName+"&type=users"}>
@@ -116,36 +118,38 @@ export default async function Home() {
                     alt="Github search"
                     width={20}
                     height={80}
-                    class="pt-3"
+                    className="pt-3"
                     />
                   </a>
                 </div>
             </div>
-            <div class="py-3 text-left">
+            <div className="py-3 text-left">
                 
               </div>
             
             
             
-            <div class="pl-5 grid gap-8 grid-cols-7 w-5/6 justify-self-center hidden">
-              <div class="col-span-1 bg-white row-span-2 items-end">
+            <div className="pl-5 grid gap-8 grid-cols-7 w-5/6 justify-self-center hidden">
+              <div className="col-span-1 bg-white row-span-2 items-end">
                 {profileData.photoUploaded ? (
                   <Image 
                   src={profileData.photoUrl}
+                  alt="user profile pic"
                   width={250}
                   height={300}
-                  class="outline-2 rounded-full outline-black self-end right-0" />
+                  className="outline-2 rounded-full outline-black self-end right-0" />
                 ) : (
                   <Image 
                   src="/vercel.png"
+                  alt="placeholder profile pic"
                   width={120}
                   height={100}
-                  class="outline-2 rounded-full outline-black self-end pr-5" />
+                  className="outline-2 rounded-full outline-black self-end pr-5" />
                 )}
               </div>
-              <div class="col-span-6">
-                <h1 class="text-2xl text-left">
-                Welcome to <span class="font-semibold text-emerald-600">{profileData.preferredName}'s</span> Vercelian profile page,<br /> powered by
+              <div className="col-span-6">
+                <h1 className="text-2xl text-left">
+                Welcome to <span className="font-semibold text-emerald-600">{profileData.preferredName}apos;s</span> Vercelian profile page,<br /> powered by
                 <Image
                   className="inline dark:drop-shadow-[0_0_0.3rem_#ffffff70] mx-2 my-2 align-middle dark:invert"
                   src="/next.svg"
@@ -165,13 +169,13 @@ export default async function Home() {
 
                 </h1>
               </div>
-              <div class="col-span-4 py-3 text-left">
-                {profileData.preferredName} is a <span class="font-bold">{profileData.jobTitle}</span> in the {profileData.division} org, <br />working in <a href={'https://en.wikipedia.org/wiki/'+profileData.location.replace(" - Work From Home","")} class="underline text-blue-600 italic">{profileData.location.replace(" - Work From Home","")}.</a>
+              <div className="col-span-4 py-3 text-left">
+                {profileData.preferredName} is a <span className="font-bold">{profileData.jobTitle}</span> in the {profileData.division} org, <br />working in <a href={'https://en.wikipedia.org/wiki/'+profileData.location.replace(" - Work From Home","")} className="underline text-blue-600 italic">{profileData.location.replace(" - Work From Home","")}.</a>
               </div>
             </div>
             
-            <h1 class="text-2xl hidden">
-              Welcome to <span class="font-semibold text-emerald-600">{profileData.preferredName}'s</span> Vercelian profile page, powered by
+            <h1 className="text-2xl hidden">
+              Welcome to <span className="font-semibold text-emerald-600">{profileData.preferredName}apos;s</span> Vercelian profile page, powered by
               <Image
                 className="inline dark:drop-shadow-[0_0_0.3rem_#ffffff70] mx-2 my-2 align-middle dark:invert"
                 src="/next.svg"
@@ -182,8 +186,8 @@ export default async function Home() {
               />
             </h1>
 
-            <div class="py-3 hidden">
-              {profileData.preferredName} is a <span class="font-bold">{profileData.jobTitle}</span> in {profileData.division}, working in {profileData.location.replace(" - Work From Home","")}.
+            <div className="py-3 hidden">
+              {profileData.preferredName} is a <span className="font-bold">{profileData.jobTitle}</span> in {profileData.division}, working in {profileData.location.replace(" - Work From Home","")}.
             </div>
 
 
