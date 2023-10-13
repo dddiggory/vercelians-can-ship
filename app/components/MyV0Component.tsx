@@ -6,7 +6,7 @@ import React from 'react';
 function TestComponent() {
     return (
     <div className="hidden">
-        <h1>You can't see me, but soon I'm going to be a v0 component.</h1>
+        <h1>You can&apost see me, but soon I&aposm going to be a v0 component.</h1>
     </div>
     )
 }

@@ -75,7 +75,7 @@ export default async function Home() {
             <p className="fixed left-0 top-0 w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           
             <h1>Welcome!  This is a starting point for your personal Vercelian info page.
-            Start by clicking <a href="" className="underline text-blue-800">'Use This Template' on Github</a> to make your own copy and deploy it to Vercel.</h1>
+            Start by clicking <a href="" className="underline text-blue-800">&aposUse This Template&apos on Github</a> to make your own copy and deploy it to Vercel.</h1>
             <p className="pt-3">For some personalized starter content, go to <code className="font-mono font-bold">app/page.tsx</code> and insert your work email into the slot on Line 1.  <br />Happy shipping! 🚢
             </p>
           </p>
