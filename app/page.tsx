@@ -1,4 +1,4 @@
-const yourWorkEmail = ""; //<---for an initial starting point, insert your work email between the double-quotes here!
+const yourWorkEmail = "diggory.rycroft@vercel.com"; //<---for an initial starting point, insert your work email between the double-quotes here!
 
 
 import Image from 'next/image';
