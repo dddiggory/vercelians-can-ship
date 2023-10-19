@@ -41,8 +41,7 @@ const handleDate = (timestamp: string) => {
   ];
   const formattedDate = monthNames[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
   const now = new Date();
-  //@ts-ignore
-  const diffTime = Math.abs(now - date);
+  const diffTime = Math.abs(now.getTime() - date.getTime());
   const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
   return { formattedDate, diffDays };
 }
