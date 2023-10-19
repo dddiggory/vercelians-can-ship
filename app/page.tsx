@@ -75,7 +75,7 @@ export default async function Home() {
             <div className="grid grid-cols-1 lg:grid-cols-5">
                <div className="col-span-1 min-w-[150px] px-4 sm:self-center mx-auto">
                 {profileData.avatar_url ? (
-                    <Image 
+                    <img 
                     src={profileData.avatar_url}
                     alt="Github profile picture of user"
                     width={150}
