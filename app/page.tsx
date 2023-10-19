@@ -1,4 +1,4 @@
-const yourGithubUsername = ""; //<---for an initial starting point, insert your github username between the double quotes here.  
+const yourGithubUsername = "dddiggory"; //<---for an initial starting point, insert your github username between the double quotes here.  
 // Letter casing doesn't matter.
 
 
@@ -147,7 +147,7 @@ export default async function Home() {
                     </div>
                 </div>
                 <div className="my-4 text-sm md:text-lg">
-                        {profileData.name.split(" ")[0]} created a Github account on <br className="inline md:hidden" />{handleDate(profileData.created_at).formattedDate}. <br className="inline md:hidden" />{daysOfShipping} {daysOfShipping === 1 ? (<span>day</span>) : (<span>days</span>)} of shipping, and counting!
+                        {profileData.name} created a Github account on <br className="inline md:hidden" />{handleDate(profileData.created_at).formattedDate}. <br className="inline md:hidden" />{daysOfShipping} {daysOfShipping === 1 ? (<span>day</span>) : (<span>days</span>)} of shipping, and counting!
                 </div>
                 <div className="pt-4 grid grid-cols-8 w-1/5 gap-2">
                   <div className="col-span-2">
