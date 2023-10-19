@@ -1,72 +1,60 @@
-const yourWorkEmail = ""; //<---for an initial starting point, insert your work email between the double-quotes here!
+const yourGithubUsername = "dddiggory"; //<---for an initial starting point, insert your github username between the double quotes here.  
+// Letter casing doesn't matter.
+
 
 
 import Image from 'next/image';
+import Link from 'next/link';
 import MyV0Component from './components/MyV0Component'
 
 let getRandomVercelian = false;
+// const githubToken = process.env.GITHUB_TOKEN;
+const githubToken = process.env.GITHUB_TOKEN ? process.env.GITHUB_TOKEN : false;
 
-
-async function getBambooHrData(yourWorkEmail: string) {
-  if (!yourWorkEmail) {
+async function getGithubProfile(yourGithubUsername: string) {
+  if (!yourGithubUsername) {
     return false;
   }
-  const api_key = process.env.BAMBOOHR_KEY
-  const directory_url = "https://api.bamboohr.com/api/gateway.php/vercel/v1/employees/directory"
-
-  const vercelian_email = yourWorkEmail
-
-  const res = await fetch(directory_url, {
+  const github_profile_url = "https://api.github.com/users/"+yourGithubUsername
+  const res = await fetch(github_profile_url, {
     method: 'GET',
     headers: {
-      'Accept': 'application/json',
-      'Authorization': 'Basic ' + Buffer.from(api_key + ':').toString('base64')
+      'Authorization': 'Bearer '+githubToken
     },
     next: {
       revalidate: 3600
     }
   })
-  const resJson = await res.json();
-  const directory = resJson.employees;
-  let vercelian = [];
-  let urlParams
-  if (urlParams){ //.has('randomize')) {
-    vercelian.push(directory[Math.floor(Math.random() * directory.length)])
-  } else {
-    // vercelian.push(directory[Math.floor(Math.random() * directory.length)])
-    vercelian = directory.filter(((vercelian: { workEmail: string }) => (vercelian.workEmail) == vercelian_email));
-  }
-  
-  if (vercelian.length===0) {
-    console.log("NO PROFILE");
+  const githubProfile = await(res.json());
+  // console.log(githubProfile);
+  if (githubProfile.message === "Not Found") {
     return "not-found";
   }
-  console.log(vercelian);
-  return vercelian[0];
+  return githubProfile;
   
 }
 
-
-//   const router = useRouter();
-
-//   const addQueryParamAndRefresh = async () => {
-//     const query = {...router.query, randomize: 'true'};
-
-//     await router.push({
-//       pathname: router.pathname,
-//       query
-//     });
-//   }
-
-// }
+const handleDate = (timestamp: string) => {
+  const date = new Date(timestamp);
+  const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+  ];
+  const formattedDate = monthNames[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear();
+  const now = new Date();
+  const diffTime = Math.abs(now - date);
+  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+  return { formattedDate, diffDays };
+}
 
 export default async function Home() {
-  const profileData = await getBambooHrData(yourWorkEmail);
 
-  console.log(profileData);
+  const profileData = await getGithubProfile(yourGithubUsername);
+  const daysOfShipping = handleDate(profileData.created_at).diffDays
+  
+  
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      {/* <AutomaticIntro /> */}
+    <main className="flex min-h-screen flex-col items-center justify-between p-8 lg:p-24">
       
       <div>
         {!profileData ? (
@@ -81,17 +69,18 @@ export default async function Home() {
             
           </div>
         ) : profileData === 'not-found' ? (
-          <h1>Profile not found! Are you sure {yourWorkEmail} is your correct work email?</h1>
+          <h1>Profile not found! Are you sure {yourGithubUsername} is your correct Github Username?</h1>
         ) : (
-          <div className="text-center flex py-4 px-4 bg-slate-100 rounded-lg border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-            <div className="flex-auto min-w-fit">
-              {profileData.photoUploaded ? (
+          <div className="text-center py-4 px-4 bg-slate-100 rounded-lg border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+            <div className="grid grid-cols-1 lg:grid-cols-5">
+               <div className="col-span-1 min-w-[150px] px-4 sm:self-center mx-auto">
+                {profileData.avatar_url ? (
                     <Image 
-                    src={profileData.photoUrl}
-                    alt="BambooHR profile picture of user"
+                    src={profileData.avatar_url}
+                    alt="Github profile picture of user"
                     width={150}
                     height={200}
-                    className="rounded-full outline outline-4 outline-slate-500" />
+                    className="rounded-full min-w-full outline outline-3 md:outline-4 outline-neutral-800" />
                   ) : (
                     <Image 
                     src="/vercel.png"
@@ -100,33 +89,69 @@ export default async function Home() {
                     alt="Placeholder picture for user without profile picture uploaded"
                     className="outline-2 rounded-full outline-black self-end pr-5" />
                   )}
-            </div>
-            <div className="flex-auto min-w-fit ml-6 text-left">
-                <h1 className="text-3xl">
-                Welcome to <span className="font-semibold text-emerald-600">{profileData.preferredName}&apos;s</span> Vercelian profile page,<br /> powered by
-                <Image
-                  className="inline dark:drop-shadow-[0_0_0.3rem_#ffffff70] mx-2 my-2 align-middle dark:invert"
+                </div>
+                <div className="col-span-4 text-center pt-5 lg:pt-0 lg:text-left">
+                 <h1 className="text-2xl lg:text-3xl">
+                 Welcome to <br className="inline md:hidden" /> 
+                  <span className="font-semibold text-emerald-600">{profileData.name}&apos;s</span> Vercelian profile page, <br /> <span className="text-base lg:text-3xl">powered by
+                 <Image
+                  className="w-16 md:w-28 inline dark:drop-shadow-[0_0_0.3rem_#ffffff70] ml-2 md:mx-4 my-4 align-middle dark:invert"
                   src="/next.svg"
                   alt="Next.js Logo"
-                  width={70}
-                  height={8}
+                  width={0}
+                  height={0}
                   priority
-                /> and 
+                /> on 
                 <Image
                 src="/vercel.svg"
                 alt="Vercel Logo"
-                className="inline mx-2 dark:invert"
-                width={100}
-                height={24}
+                className="w-16 md:w-28 inline ml-2 md:ml-4 mr-1 dark:invert"
+                width={0}
+                height={0}
                 priority
-              />.
+              />.</span>
                 </h1>
-                <p className="text-md pt-3">
-                {profileData.preferredName} is a <span className="font-bold">{profileData.jobTitle}</span> in the {profileData.division} org, <br />working in <a href={'https://en.wikipedia.org/wiki/'+profileData.location.replace(" - Work From Home","")} className="underline text-blue-600 italic">{profileData.location.replace(" - Work From Home","")}.</a>
-                </p>
+                <div className="text-md w-full md:w-1/2 pt-0 grid gap-y-1 grid-cols-2 sm:grid-cols-2">
+                    {profileData.location ? (<div className="flex items-center">
+                        <Link className="underline text-blue-800" href={"https://en.wikipedia.org/wiki/"+profileData.location} target="_blank">
+                          <Image className="inline my-auto mx-1" src="globe-icon.svg" height="15" width="15" alt="globe icon"/>
+                          {profileData.location}
+                        </Link>
+                      </div>) : null}
+                    {profileData.company ? (
+                      <div className="flex items-center">
+                        <Link className="underline text-blue-800" href={"https://"+profileData.company.replace("@","")+".com/"} target="_blank">
+                          <Image className="inline my-auto mx-1" src="building-icon.svg" height="15" width="15" alt="globe icon"/>
+                          {profileData.company}
+                        </Link>
+                      </div>) : null}
+                    <div className="flex items-center col-span-2">
+                      <Link className="underline text-blue-800" target="_blank" href={profileData.html_url}>
+                        <Image 
+                        src="/github.png"
+                        alt="Github profile link"
+                        width={20}
+                        height={80}
+                        className="inline dark:hidden"
+                        />
+                        <Image 
+                        src="/github-white.png"
+                        alt="Github search"
+                        width={20}
+                        height={80}
+                        className="hidden dark:inline"
+                        />
+                        <span className="pl-1">{profileData.login}</span>
+                      </Link>
+                      <span className="pl-1">({profileData.public_repos} public repos)</span>
+                    </div>
+                </div>
+                <div className="my-4 text-sm md:text-lg">
+                        {profileData.name.split(" ")[0]} created a Github account on <br className="inline md:hidden" />{handleDate(profileData.created_at).formattedDate}. <br className="inline md:hidden" />{daysOfShipping} {daysOfShipping === 1 ? (<span>day</span>) : (<span>days</span>)} of shipping, and counting!
+                </div>
                 <div className="pt-4 grid grid-cols-8 w-1/5 gap-2">
                   <div className="col-span-2">
-                    <a target="_blank" href={"https://www.google.com/search?q="+profileData.preferredName+"+"+profileData.lastName+"+vercel"}>
+                    <Link target="_blank" href={"https://www.google.com/search?q="+profileData.name+"+vercel"}>
                     <Image 
                     src="/google.png"
                     alt="Google search"
@@ -134,13 +159,13 @@ export default async function Home() {
                     height={80}
                     className="pt-3"
                   />
-                    </a>
+                    </Link>
                   </div>
                   <div className="col-span-2">
-                  <a target="_blank" href={"https://github.com/search?q="+profileData.preferredName+"+"+profileData.lastName+"&type=users"}>
+                  <Link target="_blank" href={profileData.html_url}>
                     <Image 
                     src="/github.png"
-                    alt="Github search"
+                    alt="Github profile link"
                     width={20}
                     height={80}
                     className="pt-3 block dark:hidden"
@@ -152,13 +177,89 @@ export default async function Home() {
                     height={80}
                     className="pt-3 hidden dark:block"
                     />
-                  </a>
+                  </Link>
                   </div>
                   {/* <button onClick="randomize()">hey</button> */}
                 </div>
             </div>
-
+            </div>
           </div>
+          // <div className="hidden text-center flex py-4 px-4 bg-slate-100 rounded-lg border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+          //   <div className="flex-auto min-w-fit">
+          //     {profileData.avatar_url ? (
+          //           <Image 
+          //           src={profileData.photoUrl}
+          //           alt="BambooHR profile picture of user"
+          //           width={150}
+          //           height={200}
+          //           className="rounded-full outline outline-4 outline-slate-500" />
+          //         ) : (
+          //           <Image 
+          //           src="/vercel.png"
+          //           width={150}
+          //           height={100}
+          //           alt="Placeholder picture for user without profile picture uploaded"
+          //           className="outline-2 rounded-full outline-black self-end pr-5" />
+          //         )}
+          //   </div>
+          //   <div className="flex-auto min-w-fit ml-6 text-left">
+          //       <h1 className="text-3xl">
+          //       Welcome to <span className="font-semibold text-emerald-600">{profileData.preferredName}&apos;s</span> Vercelian profile page,<br /> powered by
+          //       <Image
+          //         className="inline dark:drop-shadow-[0_0_0.3rem_#ffffff70] mx-2 my-2 align-middle dark:invert"
+          //         src="/next.svg"
+          //         alt="Next.js Logo"
+          //         width={70}
+          //         height={8}
+          //         priority
+          //       /> and 
+          //       <Image
+          //       src="/vercel.svg"
+          //       alt="Vercel Logo"
+          //       className="inline mx-2 dark:invert"
+          //       width={100}
+          //       height={24}
+          //       priority
+          //     />.
+          //       </h1>
+          //       <p className="text-md pt-3">
+          //       {profileData.preferredName} is a <span className="font-bold">{profileData.jobTitle}</span> in the {profileData.division} org, <br />working in <a href={'https://en.wikipedia.org/wiki/'+profileData.location.replace(" - Work From Home","")} className="underline text-blue-600 italic">{profileData.location.replace(" - Work From Home","")}.</a>
+          //       </p>
+          //       <div className="pt-4 grid grid-cols-8 w-1/5 gap-2">
+          //         <div className="col-span-2">
+          //           <a target="_blank" href={"https://www.google.com/search?q="+profileData.preferredName+"+"+profileData.lastName+"+vercel"}>
+          //           <Image 
+          //           src="/google.png"
+          //           alt="Google search"
+          //           width={20}
+          //           height={80}
+          //           className="pt-3"
+          //         />
+          //           </a>
+          //         </div>
+          //         <div className="col-span-2">
+          //         <a target="_blank" href={"https://github.com/search?q="+profileData.preferredName+"+"+profileData.lastName+"&type=users"}>
+          //           <Image 
+          //           src="/github.png"
+          //           alt="Github search"
+          //           width={20}
+          //           height={80}
+          //           className="pt-3 block dark:hidden"
+          //           />
+          //           <Image 
+          //           src="/github-white.png"
+          //           alt="Github search"
+          //           width={20}
+          //           height={80}
+          //           className="pt-3 hidden dark:block"
+          //           />
+          //         </a>
+          //         </div>
+          //         {/* <button onClick="randomize()">hey</button> */}
+          //       </div>
+          //   </div>
+
+          // </div>
         )}
 
         <div className="py-8">
