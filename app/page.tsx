@@ -1,5 +1,11 @@
-const yourGithubUsername = "dddiggory"; //<---for an initial starting point, insert your github username between the double quotes here.  
-// Letter casing doesn't matter.
+const yourGithubUsername = "dddiggory"; //<---for an initial starting point, insert your github username between 
+//the double quotes here.  Letter casing doesn't matter.
+
+const yourCustomMessage = `
+  //Between these lines, you can insert an optional message for visitors to your page!
+
+  //end of message
+`
 
 
 
@@ -113,20 +119,20 @@ export default async function Home() {
                 </h1>
                 <div className="text-md w-full md:w-1/2 pt-0 grid gap-y-1 grid-cols-2 sm:grid-cols-2">
                     {profileData.location ? (<div className="flex items-center">
-                        <Link className="underline text-blue-800" href={"https://en.wikipedia.org/wiki/"+profileData.location} target="_blank">
+                        <Link className="underline text-blue-500" href={"https://en.wikipedia.org/wiki/"+profileData.location} target="_blank">
                           <Image className="inline my-auto mx-1" src="globe-icon.svg" height="15" width="15" alt="globe icon"/>
                           {profileData.location}
                         </Link>
                       </div>) : null}
                     {profileData.company ? (
                       <div className="flex items-center">
-                        <Link className="underline text-blue-800" href={"https://"+profileData.company.replace("@","")+".com/"} target="_blank">
+                        <Link className="underline text-blue-500" href={"https://"+profileData.company.replace("@","")+".com/"} target="_blank">
                           <Image className="inline my-auto mx-1" src="building-icon.svg" height="15" width="15" alt="globe icon"/>
                           {profileData.company}
                         </Link>
                       </div>) : null}
                     <div className="flex items-center col-span-2">
-                      <Link className="underline text-blue-800" target="_blank" href={profileData.html_url}>
+                      <Link className="underline text-blue-500" target="_blank" href={profileData.html_url}>
                         <Image 
                         src="/github.png"
                         alt="Github profile link"
@@ -148,38 +154,6 @@ export default async function Home() {
                 </div>
                 <div className="my-4 text-sm md:text-lg">
                         {profileData.name} created a Github account on <br className="inline md:hidden" />{handleDate(profileData.created_at).formattedDate}. <br className="inline md:hidden" />{daysOfShipping} {daysOfShipping === 1 ? (<span>day</span>) : (<span>days</span>)} of shipping, and counting!
-                </div>
-                <div className="pt-4 grid grid-cols-8 w-1/5 gap-2">
-                  <div className="col-span-2">
-                    <Link target="_blank" href={"https://www.google.com/search?q="+profileData.name+"+vercel"}>
-                    <Image 
-                    src="/google.png"
-                    alt="Google search"
-                    width={20}
-                    height={80}
-                    className="pt-3"
-                  />
-                    </Link>
-                  </div>
-                  <div className="col-span-2">
-                  <Link target="_blank" href={profileData.html_url}>
-                    <Image 
-                    src="/github.png"
-                    alt="Github profile link"
-                    width={20}
-                    height={80}
-                    className="pt-3 block dark:hidden"
-                    />
-                    <Image 
-                    src="/github-white.png"
-                    alt="Github search"
-                    width={20}
-                    height={80}
-                    className="pt-3 hidden dark:block"
-                    />
-                  </Link>
-                  </div>
-                  {/* <button onClick="randomize()">hey</button> */}
                 </div>
             </div>
             </div>
@@ -262,7 +236,7 @@ export default async function Home() {
           // </div>
         )}
 
-        <div className="py-8">
+        <div className={"py-10 " + (profileData ? 'block' : 'hidden')}> 
           <MyV0Component />
         </div>
       </div>

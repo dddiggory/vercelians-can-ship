@@ -5,8 +5,8 @@ import React from 'react';
 
 function TestComponent() {
     return (
-    <div className="hidden">
-        <h1>You can&apos;t see me, but soon I&apos;m going to be a v0 component.</h1>
+    <div className="text-center italic text-xs">
+        <p>[This would be a pretty good place for a <a href="https://.v0.dev" className="text-blue-500 underline">v0 component</a>.  Go make one, then paste it into <code className="font-mono font-bold">app/components/MyV0Component.tsx!</code>]</p>
     </div>
     )
 }
