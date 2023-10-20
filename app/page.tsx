@@ -68,7 +68,7 @@ export default async function Home() {
             <p className="fixed left-0 top-0 w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           
             Welcome!  This is a starting point for your personal Vercelian info page.
-            Start by visiting <a href="https://github.com/dddiggory/vercelians-can-code#welcome-vercelian" target="_blank" className="underline text-blue-800">&apos;the Template repo on Github&apos;</a>. Follow the instructions in the Readme to make your own copy and deploy it to Vercel.
+            Start by visiting <a href="https://github.com/dddiggory/vercelians-can-ship#welcome-vercelian" target="_blank" className="underline text-blue-800">&apos;the Template repo on Github&apos;</a>. Follow the instructions in the Readme to make your own copy and deploy it to Vercel.
             <p className="pt-3">For some personalized starter content, go to <code className="font-mono font-bold">app/page.tsx</code> and insert your work email into the slot on Line 1.  <br />Happy shipping! 🚢
             </p>
           </p>
