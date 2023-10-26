@@ -1,4 +1,4 @@
-const yourGithubUsername = "dddiggory"; //<---for an initial starting point, insert your github username between 
+const yourGithubUsername = ""; //<---for an initial starting point, insert your github username between 
 //the double quotes here.  Letter casing doesn't matter.
 
 
@@ -166,11 +166,12 @@ export default async function Home(url: any, city: any, region: any, country: an
           </div>
         )}
 
+        {(profileData) ? (
         <div className={"grid grid-cols-8 pt-2 pb-24" + (profileData ? 'block' : 'hidden')}>
-          <div className="col-span-8 md:col-span-6">
+          <div className={"col-span-8 md:col-span-6"}>
             <MyV0Component />
           </div>
-          <div className="col-span-8 md:col-span-2 rounded-md border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl border bg-gray-200 p-4 lg:dark:bg-zinc-800/30">
+          <div className={"col-span-8 md:col-span-2 rounded-md border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl border bg-gray-200 p-4 lg:dark:bg-zinc-800/30"}>
             <div className="overflow-hidden rounded-md">
               <div className="bg-[url('/map.svg')] opacity-75">
               {city!=='undefined' ? (
@@ -195,6 +196,7 @@ export default async function Home(url: any, city: any, region: any, country: an
             </div></div>
           </div>
         </div>
+        ): null}
       </div>
 
       {/* boilerplate */}
