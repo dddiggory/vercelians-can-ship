@@ -26,6 +26,7 @@ export async function middleware(req: NextRequest) {
     const ipCheckUrl = "http://ip-api.com/json/"+ip
     const response = await fetch(ipCheckUrl);
     const geoIp = await response.json();
+    const cityNickname = getNickname(geoIp.city);
 
     const urlWithGeo = req.nextUrl.clone();
     urlWithGeo.searchParams.set('country',geoIp.country);
@@ -33,6 +34,8 @@ export async function middleware(req: NextRequest) {
     urlWithGeo.searchParams.set('region',geoIp.region);
     urlWithGeo.searchParams.set('regionName',geoIp.regionName);
     urlWithGeo.searchParams.set('city',geoIp.city);
+    urlWithGeo.searchParams.set('cityNickname', cityNickname);
+    
     return NextResponse.rewrite(urlWithGeo)
     console.log(headers)
 
@@ -68,7 +71,7 @@ export async function middleware(req: NextRequest) {
   const region = geo.region || ''
 
   const countryInfo = countries.find((x) => x.cca2 === country)
-  const cityNickname = getNickname(city);
+  // const cityNickname = getNickname(city);
 
   url.searchParams.set('country', country)
   url.searchParams.set('city', city)

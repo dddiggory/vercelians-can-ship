@@ -60,7 +60,7 @@ export default async function Home(url: any, city: any, region: any, country: an
   console.log(geo);
   city = JSON.stringify(geo.city) || undefined
   country = JSON.stringify(geo.country) || undefined
-  cityNickname = JSON.stringify(geo.country) || undefined
+  cityNickname = JSON.stringify(geo.cityNickname) || undefined
   region = JSON.stringify(geo.region) || undefined
   let cityWiki = "https://en.wikipedia.org/wiki/"+city+", "+region
   
