@@ -1,14 +1,8 @@
-const yourGithubUsername = "dddiggory"; //<---for an initial starting point, insert your github username between 
+const yourGithubUsername = ""; //<---for an initial starting point, insert your github username between 
 //the double quotes here.  Letter casing doesn't matter.
 
-const yourCustomMessage = `
-  //Between these lines, you can insert an optional message for visitors to your page!
 
-  //end of message
-`
-
-
-
+//During the workshop, leave the code below as-is. But when you're ready, don't be afraid to jump in, make edits, try new things, and make it your own!
 import Image from 'next/image';
 import Link from 'next/link';
 import MyV0Component from './components/MyV0Component'
