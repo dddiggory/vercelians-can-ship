@@ -171,14 +171,18 @@ export default async function Home(url: any, city: any, region: any, country: an
             <MyV0Component />
           </div>
           <div className="col-span-8 md:col-span-2 rounded-md border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          <div className="fixed inset-0 overflow-hidden opacity-75 bg-[#f8fafb]">
-            <Image alt="World Map" src={map} fill={true} quality={100} />
-          </div>
-            hi
-            {JSON.stringify(city)}
-            {JSON.stringify(region)}
-            {JSON.stringify(country)}
-            {JSON.stringify(cityNickname)}
+            <div className="fixed inset-0 overflow-hidden opacity-75 bg-[#f8fafb]">
+              <Image alt="World Map" src={map} fill={true} quality={100} />
+            </div>
+            {city!=='undefined' ? (
+              <p className="text-xl">You're visiting from beautiful {city}, {region}!</p>
+            ): null}
+            {cityNickname!=='undefined' ? (
+              <p>Known by some as {cityNickname}.</p>
+            ): null}
+            {city!=='undefined' ? (
+              <p className="text-xl">Read more about it at {cityWiki}.</p>
+            ): null}
           </div>
         </div>
       </div>

@@ -26,7 +26,6 @@ export async function middleware(req: NextRequest) {
     const ipCheckUrl = "http://ip-api.com/json/"+ip
     const response = await fetch(ipCheckUrl);
     const geoIp = await response.json();
-    console.log(geoIp);
 
     const urlWithGeo = req.nextUrl.clone();
     urlWithGeo.searchParams.set('country',geoIp.country);
