@@ -49,12 +49,13 @@ const handleDate = (timestamp: string) => {
   return { formattedDate, diffDays };
 }
 
-// @ts-nocheck
-export default async function Home(name: string, city: string, region: string, country: string, cityNickname: string) {
+
+export default async function Home(name: any, city: any, region: any, country: any, cityNickname: any) {
 
   const profileData = await getGithubProfile(yourGithubUsername);
   const daysOfShipping = handleDate(profileData.created_at).diffDays
-
+  
+  // @ts-nocheck
   name = decodeURIComponent(name) || undefined
   city = decodeURIComponent(city) || undefined
   country = decodeURIComponent(country) || undefined
