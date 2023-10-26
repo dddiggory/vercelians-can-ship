@@ -1,4 +1,4 @@
-const yourGithubUsername = ""; //<---for an initial starting point, insert your github username between 
+const yourGithubUsername = "dddiggory"; //<---for an initial starting point, insert your github username between 
 //the double quotes here.  Letter casing doesn't matter.
 
 
@@ -61,7 +61,7 @@ export default async function Home(url: any, city: any, region: any, country: an
   city = geo.city || undefined
   country = geo.country || undefined
   cityNickname = geo.cityNickname || undefined
-  region = geo.region || undefined
+  region = geo.regionName || undefined
   let cityWiki = "https://en.wikipedia.org/wiki/"+city+", "+region
   
 
@@ -159,7 +159,7 @@ export default async function Home(url: any, city: any, region: any, country: an
                     </div>
                 </div>
                 <div className="my-4 text-sm md:text-lg">
-                        {profileData.name} created a Github account on <br className="inline md:hidden" />{handleDate(profileData.created_at).formattedDate}. <br className="inline md:hidden" />{daysOfShipping} {daysOfShipping === 1 ? (<span>day</span>) : (<span>days</span>)} of shipping, and counting!
+                        {profileData.name} created a Github account on <br className="inline md:hidden" />{handleDate(profileData.created_at).formattedDate}. <br className="inline lg:hidden" />{daysOfShipping} {daysOfShipping === 1 ? (<span>day</span>) : (<span>days</span>)} of shipping, and counting!
                 </div>
             </div>
             </div>
@@ -167,32 +167,41 @@ export default async function Home(url: any, city: any, region: any, country: an
         )}
 
         {(profileData) ? (
-        <div className={"grid grid-cols-8 pt-2 pb-24" + (profileData ? 'block' : 'hidden')}>
+        <div className={"grid grid-cols-8 pt-2 pb-0" + (profileData ? 'block' : 'hidden')}>
           <div className={"col-span-8 md:col-span-6"}>
             <MyV0Component />
           </div>
-          <div className={"col-span-8 md:col-span-2 rounded-md border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl border bg-gray-200 p-4 lg:dark:bg-zinc-800/30"}>
+          <div className={"col-span-8 md:col-span-2 rounded-md border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl border bg-gray-200 p-4 lg:dark:bg-zinc-800/30 h-fit"}>
             <div className="overflow-hidden rounded-md">
-              <div className="bg-[url('/map.svg')] opacity-75">
+              <div className="bg-[url('/map.svg')] dark:bg-[url('/map-dark.svg')] bg-no-repeat bg-center opacity-75">
               {city!=='undefined' ? (
                 <div className="text-center text-sm">
-                  <p className="">Next.js Middleware tells us that</p>
+                  <p className="">
+                    <a href="https://nextjs.org/docs/app/building-your-application/routing/middleware" target="_blank" className="underline text-blue-700 dark:text-blue-200">
+                      Next.js Middleware
+                      </a> tells us that</p>
                   <p className="">you're visiting from beautiful</p>
                   <a href={cityWiki} target="_blank">
-                    <p className="font-bold text-purple-700 py-2 underline">
+                    <p className="font-bold text-orange-700 dark:text-red-400 text-base drop-shadow-md drop-shadow-white py-2 underline">
                       {city}, {region}!
                     </p>
                   </a>
 
-                  {cityNickname!=='undefined' ? (
+                  {cityNickname!=='undefined' && cityNickname ? (
                     <div className="text-xs">
                       <p>Known by some as</p>
                       <p className="italic font-bold">"{cityNickname}"</p>
-                      <p className="pt-1">Want a fresh nickname? <a href="" className="underline text-blue-500">Refresh the page</a> to generate a new one!</p>
+                      <p className="pt-1">Want a fresh nickname? <a href="" className="underline text-blue-700 dark:text-blue-200">Refresh the page</a> to generate a new one!</p>
                     </div>
-                  ): null}
+                  ): (
+                    <div className="text-xs">
+                      <p>We don't have a fun nickname on file for {city}, but I'm sure it's lovely :)</p>
+                    </div>
+                  )}
                 </div>
-              ): null}
+              ): (
+                <div className="text-center text-xs">Middleware wasn't able to geolocate your IP; you may want to try a different device or network!</div>
+              )}
             </div></div>
           </div>
         </div>
