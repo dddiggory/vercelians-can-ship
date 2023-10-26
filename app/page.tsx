@@ -1,4 +1,4 @@
-const yourGithubUsername = ""; //<---for an initial starting point, insert your github username between 
+const yourGithubUsername = "dddiggory"; //<---for an initial starting point, insert your github username between 
 //the double quotes here.  Letter casing doesn't matter.
 
 
@@ -14,7 +14,6 @@ type ReqHeaders = {
     Authorization?: string;
 };
 let reqHeaders: ReqHeaders = {};
-
 
 async function getGithubProfile(yourGithubUsername: string) {
   if (!yourGithubUsername) {
@@ -49,11 +48,10 @@ const handleDate = (timestamp: string) => {
   return { formattedDate, diffDays };
 }
 
-export default async function Home() {
+export default async function Home(name, city, region, country, cityNickname) {
 
   const profileData = await getGithubProfile(yourGithubUsername);
   const daysOfShipping = handleDate(profileData.created_at).diffDays
-  
   
 
   return (
@@ -155,83 +153,11 @@ export default async function Home() {
             </div>
             </div>
           </div>
-          // <div className="hidden text-center flex py-4 px-4 bg-slate-100 rounded-lg border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          //   <div className="flex-auto min-w-fit">
-          //     {profileData.avatar_url ? (
-          //           <Image 
-          //           src={profileData.photoUrl}
-          //           alt="BambooHR profile picture of user"
-          //           width={150}
-          //           height={200}
-          //           className="rounded-full outline outline-4 outline-slate-500" />
-          //         ) : (
-          //           <Image 
-          //           src="/vercel.png"
-          //           width={150}
-          //           height={100}
-          //           alt="Placeholder picture for user without profile picture uploaded"
-          //           className="outline-2 rounded-full outline-black self-end pr-5" />
-          //         )}
-          //   </div>
-          //   <div className="flex-auto min-w-fit ml-6 text-left">
-          //       <h1 className="text-3xl">
-          //       Welcome to <span className="font-semibold text-emerald-600">{profileData.preferredName}&apos;s</span> Vercelian profile page,<br /> powered by
-          //       <Image
-          //         className="inline dark:drop-shadow-[0_0_0.3rem_#ffffff70] mx-2 my-2 align-middle dark:invert"
-          //         src="/next.svg"
-          //         alt="Next.js Logo"
-          //         width={70}
-          //         height={8}
-          //         priority
-          //       /> and 
-          //       <Image
-          //       src="/vercel.svg"
-          //       alt="Vercel Logo"
-          //       className="inline mx-2 dark:invert"
-          //       width={100}
-          //       height={24}
-          //       priority
-          //     />.
-          //       </h1>
-          //       <p className="text-md pt-3">
-          //       {profileData.preferredName} is a <span className="font-bold">{profileData.jobTitle}</span> in the {profileData.division} org, <br />working in <a href={'https://en.wikipedia.org/wiki/'+profileData.location.replace(" - Work From Home","")} className="underline text-blue-600 italic">{profileData.location.replace(" - Work From Home","")}.</a>
-          //       </p>
-          //       <div className="pt-4 grid grid-cols-8 w-1/5 gap-2">
-          //         <div className="col-span-2">
-          //           <a target="_blank" href={"https://www.google.com/search?q="+profileData.preferredName+"+"+profileData.lastName+"+vercel"}>
-          //           <Image 
-          //           src="/google.png"
-          //           alt="Google search"
-          //           width={20}
-          //           height={80}
-          //           className="pt-3"
-          //         />
-          //           </a>
-          //         </div>
-          //         <div className="col-span-2">
-          //         <a target="_blank" href={"https://github.com/search?q="+profileData.preferredName+"+"+profileData.lastName+"&type=users"}>
-          //           <Image 
-          //           src="/github.png"
-          //           alt="Github search"
-          //           width={20}
-          //           height={80}
-          //           className="pt-3 block dark:hidden"
-          //           />
-          //           <Image 
-          //           src="/github-white.png"
-          //           alt="Github search"
-          //           width={20}
-          //           height={80}
-          //           className="pt-3 hidden dark:block"
-          //           />
-          //         </a>
-          //         </div>
-          //         {/* <button onClick="randomize()">hey</button> */}
-          //       </div>
-          //   </div>
-
-          // </div>
         )}
+
+        <div>
+          {name, city, region, country, cityNickname}
+        </div>
 
         <div className={"py-10 " + (profileData ? 'block' : 'hidden')}> 
           <MyV0Component />
