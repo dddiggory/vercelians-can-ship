@@ -23,8 +23,8 @@ export async function middleware(req: NextRequest) {
     
     const headersList = headers();
     const ip = headersList.get("x-forwarded-for");
-
-    const response = await fetch("http://ip-api.com/json/");
+    const ipCheckUrl = "http://ip-api.com/json/"+ip
+    const response = await fetch(ipCheckUrl);
     const geoIp = await response.json();
     console.log(geoIp);
 
