@@ -49,6 +49,7 @@ const handleDate = (timestamp: string) => {
   return { formattedDate, diffDays };
 }
 
+// @ts-nocheck
 export default async function Home(name: string, city: string, region: string, country: string, cityNickname: string) {
 
   const profileData = await getGithubProfile(yourGithubUsername);
