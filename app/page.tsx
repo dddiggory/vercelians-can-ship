@@ -50,19 +50,20 @@ const handleDate = (timestamp: string) => {
 }
 
 
-export default async function Home(geoObj: any, city: any, region: any, country: any, cityNickname: any) {
+export default async function Home(url: any, city: any, region: any, country: any, cityNickname: any) {
 
   const profileData = await getGithubProfile(yourGithubUsername);
   const daysOfShipping = handleDate(profileData.created_at).diffDays
   
   // @ts-nocheck
-  // name = decodeURIComponent(name) || undefined
-  city = JSON.stringify(geoObj.city) || undefined
-  country = JSON.stringify(geoObj.country) || undefined
-  cityNickname = JSON.stringify(geoObj.country) || undefined
-  region = JSON.stringify(geoObj.region) || undefined
+  const geo = url.searchParams
+  console.log(geo);
+  city = JSON.stringify(geo.city) || undefined
+  country = JSON.stringify(geo.country) || undefined
+  cityNickname = JSON.stringify(geo.country) || undefined
+  region = JSON.stringify(geo.region) || undefined
   let cityWiki = "https://en.wikipedia.org/wiki/"+city+", "+region
-  console.log(JSON.stringify(geoObj))
+  
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-8 lg:p-24">

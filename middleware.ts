@@ -1,5 +1,7 @@
 // @ts-nocheck
-import { NextRequest, NextResponse } from 'next/server'
+import { NextRequest, NextResponse } from 'next/server';
+import { headers } from "next/headers";
+
 import countries from './lib/countries.json'
 import cityNicknames from './lib/citynicknames.json'
 
@@ -18,14 +20,49 @@ function getNickname(city: string) {
 
 
 export async function middleware(req: NextRequest) {
+    
+    const headersList = headers();
+    const ip = headersList.get("x-forwarded-for");
+
+    const response = await fetch("http://ip-api.com/json/");
+    const geoIp = await response.json();
+    console.log(geoIp);
+
+    const urlWithGeo = req.nextUrl.clone();
+    urlWithGeo.searchParams.set('country',geoIp.country);
+    urlWithGeo.searchParams.set('countryCode',geoIp.countryCode);
+    urlWithGeo.searchParams.set('region',geoIp.region);
+    urlWithGeo.searchParams.set('regionName',geoIp.regionName);
+    urlWithGeo.searchParams.set('city',geoIp.city);
+    return NextResponse.rewrite(urlWithGeo)
+    console.log(headers)
+
+    const { nextUrl: url, geo } = req
+//   const res = NextResponse.next();
+
+//   let geoIp = await fetch("https://geolocation-db.com/json/fd18cb60-5f5a-11ee-87d3-bd3f0d7c4f89", {
+//     method: 'GET', // or 'POST'
+//     })
+//     .then(response => response.json())
+//     .then(data => console.log(data))
+//     .catch((error) => {
+//     console.error('Error:', error);
+//     });
+
+//   console.log(geoIp);
+
+  return new NextResponse();
   
-  const { nextUrl: url, geo } = req
+  console.log( geo );
+
+//   const { nextUrl: url, geo } = req
   
   //this is an Early Return; it's ending the Middleware
   //function before it has the chance to complete its work. 
   //To turn on our middleware function, comment-out
   //the next line by adding // in front of it. Then, Commit!
 //   return NextResponse.rewrite(url);
+
 
   const country = geo.country || ''
   const city = geo.city || ''
