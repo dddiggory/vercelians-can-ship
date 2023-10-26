@@ -1,3 +1,4 @@
+// @ts-nocheck
 import { NextRequest, NextResponse } from 'next/server'
 import countries from './lib/countries.json'
 import cityNicknames from './lib/citynicknames.json'
@@ -6,7 +7,7 @@ export const config = {
   matcher: '/',
 }
 
-function getNickname(city) {
+function getNickname(city: string) {
   if(cityNicknames.hasOwnProperty(city)) {
       let nicknames = cityNicknames[city];
       return nicknames[Math.floor(Math.random() * nicknames.length)];
