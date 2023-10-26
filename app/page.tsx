@@ -10,6 +10,11 @@ import MyV0Component from './components/MyV0Component'
 let getRandomVercelian = false;
 // const githubToken = process.env.GITHUB_TOKEN;
 const githubToken = process.env.GITHUB_TOKEN ? process.env.GITHUB_TOKEN : false;
+type ReqHeaders = {
+    Authorization?: string;
+};
+let reqHeaders: ReqHeaders = {};
+
 
 async function getGithubProfile(yourGithubUsername: string) {
   if (!yourGithubUsername) {
@@ -18,9 +23,7 @@ async function getGithubProfile(yourGithubUsername: string) {
   const github_profile_url = "https://api.github.com/users/"+yourGithubUsername
   const res = await fetch(github_profile_url, {
     method: 'GET',
-    headers: {
-      'Authorization': 'Bearer '+githubToken
-    },
+    headers: reqHeaders,
     next: {
       revalidate: 3600
     }
