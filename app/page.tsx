@@ -48,7 +48,7 @@ const handleDate = (timestamp: string) => {
   return { formattedDate, diffDays };
 }
 
-export default async function Home(name, city, region, country, cityNickname) {
+export default async function Home(name: string, city: string, region: string, country: string, cityNickname: string) {
 
   const profileData = await getGithubProfile(yourGithubUsername);
   const daysOfShipping = handleDate(profileData.created_at).diffDays
@@ -156,7 +156,11 @@ export default async function Home(name, city, region, country, cityNickname) {
         )}
 
         <div>
-          {name, city, region, country, cityNickname}
+          {JSON.stringify(name)}
+          {JSON.stringify(city)}
+          {JSON.stringify(region)}
+          {JSON.stringify(country)}
+          {JSON.stringify(cityNickname)}
         </div>
 
         <div className={"py-10 " + (profileData ? 'block' : 'hidden')}> 
