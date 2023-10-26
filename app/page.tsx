@@ -1,4 +1,4 @@
-const yourGithubUsername = "dddiggory"; //<---for an initial starting point, insert your github username between 
+const yourGithubUsername = ""; //<---for an initial starting point, insert your github username between 
 //the double quotes here.  Letter casing doesn't matter.
 
 
