@@ -178,7 +178,7 @@ export default async function Home(url: any, city: any, region: any, country: an
                 <div className="text-center text-sm">
                   <p className="">Next.js Middleware tells us that</p>
                   <p className="">you're visiting from beautiful</p>
-                  <a href={cityWiki}>
+                  <a href={cityWiki} target="_blank">
                     <p className="font-bold text-purple-700 py-2 underline">
                       {city}, {region}!
                     </p>
