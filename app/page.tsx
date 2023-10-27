@@ -132,7 +132,7 @@ export default async function Home(url: any, city: any, region: any, country: an
                       </div>) : null}
                     {profileData.company ? (
                       <div className="flex items-center">
-                        <Link className="underline text-blue-500" href={"https://"+profileData.company.replace("@","")+".com/"} target="_blank">
+                        <Link className="underline text-blue-500" href={"https://duckduckgo.com/?q=!ducky+"+profileData.company.replace("@","")} target="_blank">
                           <Image className="inline my-auto mx-1" src="building-icon.svg" height="15" width="15" alt="globe icon"/>
                           {profileData.company}
                         </Link>
