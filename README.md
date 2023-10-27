@@ -1,6 +1,6 @@
 # Welcome, Vercelian!
 
-If you're just getting started, go ahead and click "Use This Template -> Create New Repository" at the top of this page.
+If you're just getting started, go ahead and click *Use This Template -> Create New Repository* at the top of this page (<a href="https://github.com/new?template_name=vercelians-can-ship&template_owner=dddiggory">or use this shortcut</a>).
 Once you've done that, we recommend the following steps: 
 1. Import this repo into a <a href="https://vercel.com">new Vercel Project.</a>
 2. To kick off your profile with some starter content, insert your Github Username at the top of `app/page.tsx` and Commit the change.

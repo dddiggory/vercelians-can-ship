@@ -75,7 +75,7 @@ export default async function Home(url: any, city: any, region: any, country: an
           
             Welcome!  This is a starting point for your personal Vercelian info page.
             Start by visiting <a href="https://github.com/dddiggory/vercelians-can-ship#welcome-vercelian" target="_blank" className="underline text-blue-800">&apos;the Template repo on Github&apos;</a>. Follow the instructions in the Readme to make your own copy and deploy it to Vercel.
-            <p className="pt-3">For some personalized starter content, go to <code className="font-mono font-bold">app/page.tsx</code> and insert your work email into the slot on Line 1.  <br />Happy shipping! 🚢
+            <p className="pt-3">For some personalized starter content, go to <code className="font-mono font-bold">app/page.tsx</code> and insert your Github Username into the slot on Line 1.  <br />Happy shipping! 🚢
             </p>
           </p>
             
