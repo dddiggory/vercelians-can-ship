@@ -84,7 +84,7 @@ export default async function Home(url: any, city: any, region: any, country: an
           ) 
           : profileData==="not-found" ? (
             <div className="grid grid-cols-4 gap-10 mx-2 row-auto h-[100px] w-3 md:w-5 lg:wd-9">
-            <div className={`col-span-4 text-2xl bg-amber-50 space-y-2 fixed left-0 top-0 w-full p-8 justify-center border-b border-gray-300 pb-6 pt-8 backdrop-blur-2xl lg:static lg:w-auto  lg:rounded-xl lg:border dark:bg-zinc-800/30 dark:from-inherit ${true==false ? ' bg-gradient-to-b from-zinc-200   dark:border-neutral-800  lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30' : null}`}>
+            <div className={`col-span-4 text-2xl bg-amber-50 space-y-2 fixed left-0 top-0 w-full p-8 justify-center border-b border-gray-300 pb-6 pt-8 backdrop-blur-2xl lg:static lg:w-auto  lg:rounded-xl lg:border dark:bg-zinc-800/30 dark:from-inherit`}>
               <p>Profile not found! Are you sure {yourGithubUsername} is your correct Github Username?</p>
               <p>Check <Link href="https://github.com/settings/profile" className="underline text-blue-800 dark:text-blue-300" target="_blank">https://github.com/settings/profile</Link> to confirm, then update it at the top of <code className="font-mono font-bold">app/page.tsx</code>.</p>
               </div>
@@ -134,6 +134,13 @@ export default async function Home(url: any, city: any, region: any, country: an
                         <Link className="underline text-blue-500" href={"https://en.wikipedia.org/wiki/"+profileData.location} target="_blank">
                           <Image className="inline my-auto mx-1" src="globe-icon.svg" height="15" width="15" alt="globe icon"/>
                             {profileData.location}
+                         </Link>
+                       </div>) : null}
+                      {profileData.company ? (
+                       <div className="flex items-center">
+                         <Link className="underline text-blue-500" href={"https://duckduckgo.com/?q=!ducky+"+profileData.company.replace("@","")} target="_blank">
+                           <Image className="inline my-auto mx-1" src="building-icon.svg" height="15" width="15" alt="globe icon"/>
+                           {profileData.company}
                          </Link>
                        </div>) : null}
                   </div>
