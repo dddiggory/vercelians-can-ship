@@ -1,8 +1,10 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { GeistSans, GeistMono } from 'geist/font'
 
 const inter = Inter({ subsets: ['latin'] })
+// const geist = GeistSans({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'My Vercelian Profile',
@@ -10,17 +12,6 @@ export const metadata: Metadata = {
 }
 
 import NavBar from './components/NavBar'
-
-// const Layout = ({ children }) => {
-//   return (
-//     <div>
-//       <NavBar />
-//       <main>{children}</main>
-//     </div>
-//   )
-// }
-
-// export default Layout
 
 
 export default function RootLayout({
@@ -31,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       {/* <div><NavBar /></div> */}
-      <body className={inter.className}>{children}</body>
+      <body className={GeistSans.className}>{children}</body>
     </html>
   )
 }
