@@ -22,9 +22,9 @@ function getNickname(city: string) {
 export async function middleware(req: NextRequest) {
     
     const headersList = headers();
-    // const ip = "68.173.59.125" //debug
+    const ip = "68.173.59.125" //debug
     // const ip = "66.222.94.249" //debug
-    const ip = headersList.get("x-forwarded-for");
+    // const ip = headersList.get("x-forwarded-for");
     const ipCheckUrl = "http://ip-api.com/json/"+ip
     const response = await fetch(ipCheckUrl);
     const geoIp = await response.json();
