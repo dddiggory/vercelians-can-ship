@@ -94,7 +94,7 @@ export default async function Home(url: any, city: any, region: any, country: an
           ) 
           : (
             //main content in completed state
-            <div className="grid grid-cols-8 gap-4 mx-2 h-[120px] w-[500px] md:w-[720px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px] justify-center align-middle">
+            <div className="grid grid-cols-8 gap-4 mx-2 h-[120px] w-[500px] md:w-[720px] lg:w-[1000px] xl:w-[1200px] justify-center align-middle">
               <div className="col-span-5 row-span-1 rounded-3xl bg-white dark:bg-gradient-to-b from-black to-neutral-800 drop-shadow-md">
                 <div className="grid grid-cols-2 lg:grid-cols-4 my-5 mx-0 pb-0">
                   <div className="flex place-self-center">
