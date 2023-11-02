@@ -4,7 +4,8 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
+  /* --background-start-rgb: 255, 247, 232; */
+  --background-start-rgb: 227, 239, 252;
   --background-end-rgb: 255, 255, 255;
 }
 
@@ -12,7 +13,7 @@
   :root {
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-end-rgb: 159, 168, 191;
   }
 }
 
