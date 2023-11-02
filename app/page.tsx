@@ -115,14 +115,14 @@ export default async function Home(url: any, city: any, region: any, country: an
                   
                   <div className={'lg:col-span-3 justify-left mt-4 align-middle'}>
                     <p className="text-xs">welcome to</p>
-                    <p className={`text-4xl ${profileData.name.length <= 20 ? 'md:text-6xl lg:text-7xl' : 'md:text-6xl' } font-semibold pb-0 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent`}>
+                    <div className={`text-4xl ${profileData.name.length <= 20 ? 'md:text-6xl lg:text-7xl' : 'md:text-6xl' } font-semibold pb-0 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent`}>
                       {profileData.name.includes(' ') ? (
                         <div>
                           <p>{profileData.name.split(' ')[0]}</p>
                           <p>{profileData.name.split(' ')[1]}&apos;s</p>
                         </div>  
                       ): (<p className="text-8xl py-7">{profileData.name}&apos;s</p>)}
-                    </p>
+                    </div>
                     <p className="text-lg">Vercelian profile page.  Powered by <Image
                       className="w-16 md:w-20 inline dark:drop-shadow-[0_0_0.3rem_#ffffff70] ml-1 md:mx-2 my-4 align-middle dark:invert"
                       src="/next.svg"
@@ -158,7 +158,7 @@ export default async function Home(url: any, city: any, region: any, country: an
                   {cityNickname!=='undefined' && cityNickname ? (
                     <div className="text-sm">
                       <p>Known to some as</p>
-                      <p className="italic font-bold">"{cityNickname}"!</p>
+                      <p className="italic text-base font-bold">"{cityNickname}"!</p>
                       <p className="pt-1">
                         Want a fresh nickname? <a href="" className="underline text-blue-700 dark:text-blue-200">Refresh the page</a> to generate a new one.
                       </p>
@@ -173,10 +173,10 @@ export default async function Home(url: any, city: any, region: any, country: an
                 
               </div>
               <div className="row-span-1 col-span-1 rounded-3xl drop-shadow-md bg-transparent grid grid-cols-1 grid-rows-2 gap-y-2">
-                    <div className="bg-black rounded-3xl flex items-center align-middle justify-center aspect-square">
+                    <div className="bg-black rounded-3xl flex items-center align-middle justify-center aspect-square drop-shadow-md">
                         <Image src="/vercel-icon-light.svg" width="0" height="0" className="w-1/2" alt="vercel logo" />
                     </div>
-                    <div className="bg-blue-500 rounded-3xl aspect-square">
+                    <div className="bg-blue-500 rounded-3xl aspect-square drop-shadow-md">
                       
                     </div>
               </div>
@@ -216,14 +216,11 @@ export default async function Home(url: any, city: any, region: any, country: an
                 That's {daysOfShipping} {daysOfShipping === 1 ? (<span>day</span>) : (<span>days</span>)} of <br />shipping, and counting!
                 </p>
               </div>
-              <div className="rounded-lg col-span-6 row-span-6 outline-dashed">
+              <div className="rounded-3xl col-span-6 row-span-5">
                 <MyV0Component />
               </div>
-              <div className="hidden rounded-lg col-span-2 bg-white">
-                placeholder
-              </div>
-              <div className="hidden  rounded-lg col-span-2 bg-white">
-                placeholder
+              <div className="rounded-2xl col-span-2 row-span-4 bg-yellow-50 drop-shadow-md">
+                
               </div>
             </div>
 
