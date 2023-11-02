@@ -5,13 +5,12 @@ const yourGithubUsername = "rauchg"; //<---for an initial starting point, insert
 //During the workshop, leave the code below as-is. But when you're ready, don't be afraid to jump in, make edits, try new things, and make it your own!
 import Image from 'next/image';
 import Link from 'next/link';
+import Suspense from 'react';
 // import map from '../public/map.svg';
 // import vercelLight from '../public/vercel-icon-light.svg';
 // import vercelDark from '../public/vercel-icon-dark.svg';
 import MyV0Component from '@/components/MyV0Component'
 
-let getRandomVercelian = false;
-// const githubToken = process.env.GITHUB_TOKEN;
 const githubToken = process.env.GITHUB_TOKEN ? process.env.GITHUB_TOKEN : false;
 type ReqHeaders = {
     Authorization?: string;
@@ -96,23 +95,34 @@ export default async function Home(url: any, city: any, region: any, country: an
           : (
             //main content in completed state
             <div className="grid grid-cols-8 gap-4 mx-2 h-[120px] w-[500px] md:w-[720px] lg:w-[1000px] xl:w-[1200px] 2xl:w-[1500px] justify-center align-middle">
-              <div className="col-span-5 row-span-1 rounded-3xl bg-white drop-shadow-md">
+              <div className="col-span-5 row-span-1 rounded-3xl bg-white dark:bg-gradient-to-b from-black to-neutral-800 drop-shadow-md">
                 <div className="grid grid-cols-2 lg:grid-cols-4 my-5 mx-0 pb-0">
                   <div className="flex place-self-center">
                   {profileData.avatar_url ? (
+                    
                     <img 
                       src={profileData.avatar_url}
                       height="0"
                       width="0"
-                      className="rounded-3xl border drop-shadow-sm w-[110px] md:w-[140px]" 
+                      className="rounded-3xl border drop-shadow-sm w-[110px] md:w-[160px]" 
                       alt="a picture of the developer of this page" />
+
                   ) : (
                     null
                   )}
+                  
                   </div>
+                  
                   <div className={'lg:col-span-3 justify-left mt-4 align-middle'}>
                     <p className="text-xs">welcome to</p>
-                    <p className={`text-4xl ${profileData.name.length <= 15 ? 'md:text-6xl lg:text-7xl' : 'md:text-6xl' } font-semibold pb-0 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent`}>{profileData.name || profileData.login}&apos;s</p>
+                    <p className={`text-4xl ${profileData.name.length <= 20 ? 'md:text-6xl lg:text-7xl' : 'md:text-6xl' } font-semibold pb-0 bg-gradient-to-r from-emerald-400 to-cyan-400 bg-clip-text text-transparent`}>
+                      {profileData.name.includes(' ') ? (
+                        <div>
+                          <p>{profileData.name.split(' ')[0]}</p>
+                          <p>{profileData.name.split(' ')[1]}&apos;s</p>
+                        </div>  
+                      ): (<p className="text-8xl py-7">{profileData.name}&apos;s</p>)}
+                    </p>
                     <p className="text-lg">Vercelian profile page.  Powered by <Image
                       className="w-16 md:w-20 inline dark:drop-shadow-[0_0_0.3rem_#ffffff70] ml-1 md:mx-2 my-4 align-middle dark:invert"
                       src="/next.svg"
@@ -133,8 +143,8 @@ export default async function Home(url: any, city: any, region: any, country: an
                   </div>
                 </div>
               </div>
-              <div className="relative flex rounded-3xl items-center justify-center col-span-2 row-span-1 drop-shadow-md bg-cover bg-white">
-                <div className="absolute rounded-3xl inset-0 bg-cover bg-center bg-opacity-5 opacity-10 bg-[url('/topography.svg')] dark:bg-[url('/map-dark.svg')]"></div>
+              <div className="relative flex rounded-3xl items-center justify-center col-span-2 row-span-1 drop-shadow-md bg-cover bg-white dark:bg-black dark:bg-opacity-10">
+                <div className="absolute rounded-3xl inset-0 bg-cover bg-center bg-opacity-5 opacity-10 bg-[url('/topography.svg')] dark:bg-[url('/map.svg')]"></div>
                 {city!=='undefined' ? (
                   <div className="bg-center drop-shadow-md mx-3 text-center text-base">
                   <a href="https://nextjs.org/docs/app/building-your-application/routing/middleware" target="_blank" className="underline text-blue-700 dark:text-blue-200 mr-1">
@@ -163,15 +173,15 @@ export default async function Home(url: any, city: any, region: any, country: an
                 
               </div>
               <div className="row-span-1 col-span-1 rounded-3xl drop-shadow-md bg-transparent grid grid-cols-1 grid-rows-2 gap-y-2">
-                    <div className="bg-black rounded-3xl flex items-center align-middle justify-center">
+                    <div className="bg-black rounded-3xl flex items-center align-middle justify-center aspect-square">
                         <Image src="/vercel-icon-light.svg" width="0" height="0" className="w-1/2" alt="vercel logo" />
                     </div>
-                    <div className="bg-blue-500 rounded-3xl">
-                      lightswitch?
+                    <div className="bg-blue-500 rounded-3xl aspect-square">
+                      
                     </div>
               </div>
-              <div className="row-span-1 col-span-2 rounded-3xl bg-white text-left justify-center text-base drop-shadow-md px-8">
-              <div className="absolute inset-0 bg-auto bg-opacity-5 opacity-5 rounded-3xl bg-[url('/jupiter.svg')] bg-repeat dark:bg-[url('/map-dark.svg')]"></div>
+              <div className="row-span-1 col-span-2 rounded-3xl bg-white text-left justify-center text-base drop-shadow-md px-8 dark:text-black">
+              <div className="absolute inset-0 bg-auto bg-opacity-5 opacity-5 rounded-3xl bg-[url('/jupiter.svg')] bg-repeat dark:bg-[url('/jupiter.svg')]"></div>
                 <div className="my-4 gap-y-2 grid-cols-2 text-sm">
                   <div className="col-span-2 align-middle">
                     <Link className="underline text-blue-500" href={profileData.html_url} target="_blank">
