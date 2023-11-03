@@ -56,17 +56,21 @@ export async function MainContent({username, geo}: {username: string}) {
 
       <Block className={styles.info}>
         <div>
+          {/* TODO: add icon */}
           icon{" "}
           <span>
             <Link href={`https://github.com/${username}`}>{username}</Link>
             <br />
+            {/* TODO: plug in */}
             20 public repos
           </span>
         </div>
         <div>
+          {/* TODO: add location */}
           icon <span>location</span>
         </div>
         <div>
+          {/* TODO:L add icon */}
           icon <Link href="https://vercel.com/home">@vercel</Link>
         </div>
       </Block>
@@ -75,7 +79,14 @@ export async function MainContent({username, geo}: {username: string}) {
         {/* TODO: plug in v0 component */}
         <h3>
           This would be a pretty good place for a{" "}
-          <Link href="https://v0.dev/">v0 component</Link>, wouldn't it?
+          <Link
+            href="https://v0.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            v0 component
+          </Link>
+          , wouldn't it?
         </h3>
         <p>
           Go make one, then paste it into{" "}
@@ -105,6 +116,7 @@ export async function MainContent({username, geo}: {username: string}) {
       </Block>
 
       <Block className={styles["powered-by"]}>
+        {/* TODO: add logos */}
         Powered by next.js on vercel
       </Block>
     </div>
