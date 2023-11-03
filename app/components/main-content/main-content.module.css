@@ -38,7 +38,6 @@
       font-size: 5rem;
       line-height: 1;
       letter-spacing: -0.06em;
-      max-width: 6em;
       font-weight: 700;
     }
   }
@@ -50,9 +49,15 @@
   aspect-ratio: 1;
 
   .img {
-    border-radius: 100%;
-    outline: 2px solid var(--gray-alpha-200);
-    outline-offset: -2px;
+    width: 8rem;
+    height: 8rem;
+    position: relative;
+
+    img {
+      border-radius: 100%;
+      outline: 2px solid var(--gray-alpha-200);
+      outline-offset: -2px;
+    }
   }
 
   .emoji {

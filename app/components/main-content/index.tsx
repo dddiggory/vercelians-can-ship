@@ -28,31 +28,39 @@ export async function MainContent({
 }) {
   const profileData = await getGithubProfile(username);
 
-  const {public_repos, location, company, created_at, login, html_url} =
+  const {public_repos, name, location, company, created_at, login, html_url} =
     profileData ?? {};
 
   const daysOfShipping = handleDate(created_at).diffDays;
 
   const {city, country, cityNickname, region} = geo ?? {};
 
+  const firstName = name.split(" ")[0];
+  const restOfName = name.split(" ").slice(1).join(" ");
+
   return (
     <div className={styles.grid}>
       <Block className={styles.header} variant="medium-gray">
         <h1 className={styles.title}>
           <span>Welcome to the Vercelian profile page of </span>
-          <strong>{profileData.name}</strong>
+          {/* TODO: handle big names */}
+          <strong>
+            {firstName}
+            <br />
+            {restOfName}
+          </strong>
         </h1>
       </Block>
 
       <Block className={styles.avatar}>
         {profileData.avatar_url ? (
-          <Image
-            className={styles.img}
-            src={profileData.avatar_url}
-            height={128}
-            width={128}
-            alt="a picture of the developer of this page"
-          />
+          <div className={styles.img}>
+            <Image
+              src={profileData.avatar_url}
+              fill
+              alt="a picture of the developer of this page"
+            />
+          </div>
         ) : (
           <div className={styles.emoji}>😊</div>
         )}
