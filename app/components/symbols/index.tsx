@@ -127,8 +127,7 @@ export function V0Logo() {
 export function NextJsLogo() {
   return (
     <svg
-      width="97"
-      height="20"
+      className={styles.next}
       viewBox="0 0 97 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -174,8 +173,7 @@ export function NextJsLogo() {
 export function VercelLogo() {
   return (
     <svg
-      width="110"
-      height="25"
+      className={styles.vercel}
       viewBox="0 0 110 25"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

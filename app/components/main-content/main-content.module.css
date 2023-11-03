@@ -11,6 +11,14 @@
     letter-spacing: -0.04em;
     line-height: 1.25;
   }
+
+  a {
+    &:focus-visible {
+      outline: none;
+      box-shadow: 0 0px 0px 2px var(--gray-1000);
+      border-radius: 0.25rem;
+    }
+  }
 }
 
 .header {
@@ -47,6 +55,7 @@
   align-items: center;
   justify-content: center;
   aspect-ratio: 1;
+  user-select: none;
 
   .img {
     width: 8rem;
@@ -160,4 +169,25 @@
   justify-content: center;
   font-size: 6rem;
   user-select: none;
+}
+
+.powered-by {
+  justify-content: space-between;
+  flex-direction: column;
+
+  span {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+  }
+
+  svg {
+    path {
+      fill: var(--gray-1000) !important;
+    }
+  }
+
+  div:last-child {
+    align-self: flex-end;
+    text-align: right;
+  }
 }

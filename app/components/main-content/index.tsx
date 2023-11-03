@@ -9,7 +9,9 @@ import {
   GitHubIcon,
   GlobeIcon,
   LocationIcon,
+  NextJsLogo,
   PullRequestIcon,
+  VercelLogo,
 } from "../symbols";
 import MyV0Component from "../MyV0Component";
 import {handleDate} from "@/lib/utils";
@@ -195,8 +197,13 @@ export async function MainContent({
       </Block>
 
       <Block className={styles["powered-by"]}>
-        {/* TODO: add logos */}
-        Powered by next.js on vercel
+        <div>
+          <span>Powered by</span>
+          <NextJsLogo />
+        </div>
+        <div>
+          <span>on</span><VercelLogo />
+        </div>
       </Block>
     </div>
   );
