@@ -12,6 +12,7 @@ import {
   PullRequestIcon,
 } from "../symbols";
 import MyV0Component from "../MyV0Component";
+import {handleDate} from "@/lib/utils";
 
 export async function MainContent({
   username,
@@ -26,6 +27,11 @@ export async function MainContent({
   };
 }) {
   const profileData = await getGithubProfile(username);
+
+  const {public_repos, location, company, created_at, login, html_url} =
+    profileData ?? {};
+
+  const daysOfShipping = handleDate(created_at).diffDays;
 
   const {city, country, cityNickname, region} = geo ?? {};
 
@@ -87,7 +93,10 @@ export async function MainContent({
         </div>
         <p>
           Via{" "}
-          <Link href="https://nextjs.org/docs/app/building-your-application/routing/middleware">
+          <Link
+            href="https://nextjs.org/docs/app/building-your-application/routing/middleware"
+            target="_blank"
+          >
             Next.js Middleware
           </Link>
           .
@@ -105,24 +114,44 @@ export async function MainContent({
             <GitHubIcon />
           </span>
           <span>
-            <Link href={`https://github.com/${username}`}>{username}</Link>
+            <Link href={html_url} target="_blank">
+              {login}
+            </Link>
             <br />
-            {/* TODO: plug in */}
-            20 public repos
+            {public_repos} public repos
           </span>
         </div>
-        <div>
-          <span className={styles.icon}>
-            <GlobeIcon />
-          </span>
-          <span>location</span>
-        </div>
-        <div>
-          <span className={styles.icon}>
-            <BuildingsIcon />
-          </span>
-          <Link href="https://vercel.com/home">@vercel</Link>
-        </div>
+        {location ? (
+          <div>
+            <span className={styles.icon}>
+              <GlobeIcon />
+            </span>
+
+            <Link
+              href={`https://en.wikipedia.org/wiki/${location}`}
+              target="_blank"
+            >
+              {location}
+            </Link>
+          </div>
+        ) : null}
+
+        {company ? (
+          <div>
+            <span className={styles.icon}>
+              <BuildingsIcon />
+            </span>
+            <Link
+              href={`https://duckduckgo.com/?q=!ducky+${profileData.company.replace(
+                "@",
+                ""
+              )}`}
+              target="_blank"
+            >
+              {company}
+            </Link>
+          </div>
+        ) : null}
       </Block>
 
       <Block className={styles.v0} variant="light-gray">
@@ -132,15 +161,24 @@ export async function MainContent({
       <Block className={styles.github} variant="purple">
         <div>
           <PullRequestIcon />
-          {/* TODO: add date + datetime */}
           <span>
-            <Link href={`https://github.com/${username}`}>{username}</Link>{" "}
-            created a GitHub account on <time>date</time>.
+            <Link href={html_url} target="_blank">
+              {login}
+            </Link>{" "}
+            created a GitHub account on{" "}
+            <time dateTime={created_at}>
+              {handleDate(created_at).formattedDate}
+            </time>
+            .
           </span>
         </div>
         <span className={styles.h3}>
-          {/* TODO: plug in number */}
-          That's <strong>3,397 days of shipping</strong>, and counting!
+          That's{" "}
+          <strong>
+            {daysOfShipping.toLocaleString()}{" "}
+            {daysOfShipping === 1 ? "day" : "days"} of shipping
+          </strong>
+          , and counting!
         </span>
       </Block>
 
