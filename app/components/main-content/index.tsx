@@ -10,11 +10,24 @@ import {
   GlobeIcon,
   LocationIcon,
   PullRequestIcon,
-  V0Logo,
 } from "../symbols";
+import MyV0Component from "../MyV0Component";
 
-export async function MainContent({username, geo}: {username: string}) {
+export async function MainContent({
+  username,
+  geo,
+}: {
+  username: string;
+  geo: {
+    city?: string;
+    country?: string;
+    cityNickname?: string;
+    region?: string;
+  };
+}) {
   const profileData = await getGithubProfile(username);
+
+  const {city, country, cityNickname, region} = geo ?? {};
 
   return (
     <div className={styles.grid}>
@@ -26,7 +39,6 @@ export async function MainContent({username, geo}: {username: string}) {
       </Block>
 
       <Block className={styles.avatar}>
-        {/* TODO: placeholder avatar w/ initials */}
         {profileData.avatar_url ? (
           <Image
             className={styles.img}
@@ -35,7 +47,9 @@ export async function MainContent({username, geo}: {username: string}) {
             width={128}
             alt="a picture of the developer of this page"
           />
-        ) : null}
+        ) : (
+          <div className={styles.emoji}>😊</div>
+        )}
       </Block>
 
       <Block className={styles.location} variant="green">
@@ -44,19 +58,32 @@ export async function MainContent({username, geo}: {username: string}) {
           <Topography />
         </div>
 
-        {/* TODO: add background */}
         <div>
           <span className={styles.icon}>
             <LocationIcon />
           </span>
-          {/* TODO: handle no city */}
-          <h3>
-            You're visiting from beautiful <strong>New York, NY</strong>.
-          </h3>
-          {/* TODO: conditional */}
-          <span>
-            Known to some as <br /> <strong>Wall Street</strong>.
-          </span>
+
+          {city && city !== "undefined" ? (
+            <>
+              <h3>
+                You're visiting from beautiful{" "}
+                <strong>
+                  {city}, {region}
+                </strong>
+                .
+              </h3>
+              {cityNickname && cityNickname !== "undefined" ? (
+                <span>
+                  Known to some as <br /> <strong>{cityNickname}</strong>.
+                </span>
+              ) : null}
+            </>
+          ) : (
+            <p>
+              Middleware wasn't able to geolocate your IP. You may want to try a
+              different device or network.
+            </p>
+          )}
         </div>
         <p>
           Via{" "}
@@ -65,7 +92,10 @@ export async function MainContent({username, geo}: {username: string}) {
           </Link>
           .
           <br />
-          Refresh the page to generate a fresh nickname.
+          {cityNickname && cityNickname !== "undefined"
+            ? "Refresh the page to generate a fresh nickname."
+            : `We don't have a fun nickname on file for ${city}, but I'm sure
+            it's lovely :)`}
         </p>
       </Block>
 
@@ -96,26 +126,7 @@ export async function MainContent({username, geo}: {username: string}) {
       </Block>
 
       <Block className={styles.v0} variant="light-gray">
-        {/* TODO: plug in v0 component */}
-        <h3>
-          This would be a pretty good place for a{" "}
-          <Link
-            href="https://v0.dev/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            v0 component
-          </Link>
-          , wouldn't it?
-        </h3>
-        <div className={styles.bottom}>
-          <p>
-            Go make one, then paste it into{" "}
-            <code>app/components/MyV0Component.tsx</code>
-          </p>
-
-          <V0Logo />
-        </div>
+        <MyV0Component />
       </Block>
 
       <Block className={styles.github} variant="purple">

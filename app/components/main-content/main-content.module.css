@@ -54,6 +54,10 @@
     outline: 2px solid var(--gray-alpha-200);
     outline-offset: -2px;
   }
+
+  .emoji {
+    font-size: 6rem;
+  }
 }
 
 .location {
@@ -97,7 +101,7 @@
 .info {
   flex-direction: column;
   justify-content: flex-end;
-  gap: 8px;
+  gap: 0.5rem;
 
   div {
     display: flex;
@@ -120,31 +124,7 @@
 
 .v0 {
   grid-column: 2 / span 2;
-
-  justify-content: space-between;
-  flex-direction: column;
-
-  h3 {
-    max-width: 11em;
-    color: var(--gray-1000);
-  }
-
-  .bottom {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-
-    p {
-      max-width: 20em;
-
-      code {
-        font-family: var(--font-geist-mono);
-        font-weight: 500;
-        font-size: 0.95em;
-        font-feature-settings: "ss09";
-      }
-    }
-  }
+  display: block;
 }
 
 .github {
