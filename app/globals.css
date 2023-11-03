@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  font-size: clamp(14px, 0.8vw, 18px);
+  font-size: clamp(12px, 0.9vw, 18px);
 
   @media (max-aspect-ratio: 1 / 2) {
     font-size: clamp(14px, 1.2vw, 18px);

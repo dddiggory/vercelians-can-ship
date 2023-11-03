@@ -35,11 +35,11 @@
 
     strong {
       display: block;
-      font-size: 4.5rem;
+      font-size: 5rem;
       line-height: 1;
       letter-spacing: -0.06em;
       max-width: 6em;
-      font-weight: 600;
+      font-weight: 700;
     }
   }
 }
@@ -92,12 +92,6 @@
     margin-bottom: 1rem;
     display: inline-block;
   }
-
-  span {
-    font-size: 1rem;
-    line-height: 1.5;
-    letter-spacing: -0.04em;
-  }
 }
 
 .info {
@@ -108,9 +102,18 @@
   div {
     display: flex;
     gap: 0.75rem;
+    align-items: flex-start;
+
+    .icon {
+      display: flex;
+    }
 
     span {
-      display: inline-block;
+      min-height: 1.5rem;
+
+      svg {
+        vertical-align: middle;
+      }
     }
   }
 }
@@ -126,23 +129,37 @@
     color: var(--gray-1000);
   }
 
-  p {
-    max-width: 20em;
+  .bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 
-    code {
-      font-family: var(--font-geist-mono);
-      font-weight: 500;
-      font-size: 0.95em;
-      font-feature-settings: "ss09";
+    p {
+      max-width: 20em;
+
+      code {
+        font-family: var(--font-geist-mono);
+        font-weight: 500;
+        font-size: 0.95em;
+        font-feature-settings: "ss09";
+      }
     }
   }
 }
 
 .github {
   grid-column: 1 / span 2;
-
   justify-content: space-between;
   flex-direction: column;
+
+  span {
+    display: inline-block;
+    max-width: 18em;
+  }
+
+  svg {
+    margin-bottom: 1rem;
+  }
 
   time {
     font-weight: 600;

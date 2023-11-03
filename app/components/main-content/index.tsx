@@ -4,6 +4,14 @@ import styles from "./main-content.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import {Topography} from "./topography";
+import {
+  BuildingsIcon,
+  GitHubIcon,
+  GlobeIcon,
+  LocationIcon,
+  PullRequestIcon,
+  V0Logo,
+} from "../symbols";
 
 export async function MainContent({username, geo}: {username: string}) {
   const profileData = await getGithubProfile(username);
@@ -38,8 +46,9 @@ export async function MainContent({username, geo}: {username: string}) {
 
         {/* TODO: add background */}
         <div>
-          {/* TODO: add icon */}
-          <span className={styles.icon}>icon</span>
+          <span className={styles.icon}>
+            <LocationIcon />
+          </span>
           {/* TODO: handle no city */}
           <h3>
             You're visiting from beautiful <strong>New York, NY</strong>.
@@ -62,8 +71,9 @@ export async function MainContent({username, geo}: {username: string}) {
 
       <Block className={styles.info}>
         <div>
-          {/* TODO: add icon */}
-          icon{" "}
+          <span className={styles.icon}>
+            <GitHubIcon />
+          </span>
           <span>
             <Link href={`https://github.com/${username}`}>{username}</Link>
             <br />
@@ -72,12 +82,16 @@ export async function MainContent({username, geo}: {username: string}) {
           </span>
         </div>
         <div>
-          {/* TODO: add location */}
-          icon <span>location</span>
+          <span className={styles.icon}>
+            <GlobeIcon />
+          </span>
+          <span>location</span>
         </div>
         <div>
-          {/* TODO:L add icon */}
-          icon <Link href="https://vercel.com/home">@vercel</Link>
+          <span className={styles.icon}>
+            <BuildingsIcon />
+          </span>
+          <Link href="https://vercel.com/home">@vercel</Link>
         </div>
       </Block>
 
@@ -94,17 +108,19 @@ export async function MainContent({username, geo}: {username: string}) {
           </Link>
           , wouldn't it?
         </h3>
-        <p>
-          Go make one, then paste it into{" "}
-          <code>app/components/MyV0Component.tsx</code>
-        </p>
+        <div className={styles.bottom}>
+          <p>
+            Go make one, then paste it into{" "}
+            <code>app/components/MyV0Component.tsx</code>
+          </p>
 
-        {/* TODO: add v0 icon */}
+          <V0Logo />
+        </div>
       </Block>
 
       <Block className={styles.github} variant="purple">
         <div>
-          {/* TODO: add icon */}
+          <PullRequestIcon />
           {/* TODO: add date + datetime */}
           <span>
             <Link href={`https://github.com/${username}`}>{username}</Link>{" "}

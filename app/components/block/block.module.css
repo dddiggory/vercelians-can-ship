@@ -48,6 +48,12 @@
     strong {
       color: var(--gray-1000);
     }
+
+    svg {
+      path {
+        fill: var(--gray-900);
+      }
+    }
   }
 
   &.inverted {
@@ -63,6 +69,12 @@
     strong {
       color: var(--teal-900);
     }
+
+    svg {
+      path {
+        fill: var(--teal-600);
+      }
+    }
   }
 
   &.purple {
@@ -72,6 +84,12 @@
     a,
     strong {
       color: var(--purple-900);
+    }
+
+    svg {
+      path {
+        fill: var(--purple-600);
+      }
     }
   }
 }
