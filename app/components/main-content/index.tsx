@@ -3,6 +3,7 @@ import {Block} from "../block";
 import styles from "./main-content.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import {Topography} from "./topography";
 
 export async function MainContent({username, geo}: {username: string}) {
   const profileData = await getGithubProfile(username);
@@ -30,6 +31,11 @@ export async function MainContent({username, geo}: {username: string}) {
       </Block>
 
       <Block className={styles.location} variant="green">
+        <div aria-hidden className={styles.bg}>
+          <Topography />
+          <Topography />
+        </div>
+
         {/* TODO: add background */}
         <div>
           {/* TODO: add icon */}
