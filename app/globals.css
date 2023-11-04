@@ -9,8 +9,8 @@
     font-size: clamp(14px, 1.2vw, 18px);
   }
 
-  @media (max-width: 960px) {
-    font-size: 14px;
+  @media (max-width: 1024px) {
+    font-size: clamp(10px, 1.5vw, 18px);
   }
 
   --background: hsla(0, 0%, 100%, 1);
