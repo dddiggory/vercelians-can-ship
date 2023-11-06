@@ -39,6 +39,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    max-width: 100%;
+
+    strong {
+      margin-top: 1rem;
+      overflow-wrap: break-word;
+    }
   }
 
   .title {
