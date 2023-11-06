@@ -30,6 +30,10 @@ export async function MainContent({
 }) {
   const profileData = await getGithubProfile(username);
 
+  if (profileData?.message?.startsWith("API rate limit exceeded")) {
+    return `Rate limit for the GitHub API has been exceeded. Please wait a few moments and try again.`;
+  }
+
   const {public_repos, name, location, company, created_at, login, html_url} =
     profileData ?? {};
 
@@ -89,9 +93,15 @@ export async function MainContent({
                 .
               </h3>
               {cityNickname && cityNickname !== "undefined" ? (
-                <span>
-                  Known to some as <br /> <strong>{cityNickname}</strong>.
-                </span>
+                <>
+                  <span className={styles.mobile}>
+                    Known to some as <strong>{cityNickname}</strong>.
+                  </span>
+                  <span className={styles.desktop}>
+                    Known to some as <br />
+                    <strong>{cityNickname}</strong>.
+                  </span>
+                </>
               ) : null}
             </>
           ) : (
@@ -101,7 +111,7 @@ export async function MainContent({
             </p>
           )}
         </div>
-        <p>
+        <p className={styles.details}>
           Via{" "}
           <Link
             href="https://nextjs.org/docs/app/building-your-application/routing/middleware"
@@ -202,7 +212,8 @@ export async function MainContent({
           <NextJsLogo />
         </div>
         <div>
-          <span>on</span><VercelLogo />
+          <span>on</span>
+          <VercelLogo />
         </div>
       </Block>
     </div>
