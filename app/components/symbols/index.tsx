@@ -3,6 +3,7 @@ import styles from "./symbols.module.css";
 export function BuildingsIcon() {
   return (
     <svg
+      aria-hidden
       className={styles.buildings}
       viewBox="0 0 16 16"
       fill="none"
@@ -21,6 +22,7 @@ export function BuildingsIcon() {
 export function GitHubIcon() {
   return (
     <svg
+      aria-hidden
       className={styles.github}
       viewBox="0 0 17 16"
       fill="none"
@@ -46,6 +48,7 @@ export function GitHubIcon() {
 export function GlobeIcon() {
   return (
     <svg
+      aria-hidden
       className={styles.globe}
       viewBox="0 0 16 16"
       fill="none"
@@ -71,6 +74,7 @@ export function GlobeIcon() {
 export function PullRequestIcon() {
   return (
     <svg
+      aria-hidden
       className={styles.pr}
       viewBox="0 0 32 32"
       fill="none"
@@ -89,6 +93,7 @@ export function PullRequestIcon() {
 export function LocationIcon() {
   return (
     <svg
+      aria-hidden
       className={styles.location}
       viewBox="0 0 26 32"
       fill="none"
@@ -127,6 +132,7 @@ export function V0Logo() {
 export function NextJsLogo() {
   return (
     <svg
+      aria-hidden
       className={styles.next}
       viewBox="0 0 97 20"
       fill="none"
@@ -173,6 +179,7 @@ export function NextJsLogo() {
 export function VercelLogo() {
   return (
     <svg
+      aria-hidden
       className={styles.vercel}
       viewBox="0 0 110 25"
       fill="none"
