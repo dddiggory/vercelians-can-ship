@@ -11,28 +11,17 @@ import {getGithubProfile} from "./lib/get-github-profile";
 
 const githubToken = process.env.GITHUB_TOKEN ? process.env.GITHUB_TOKEN : false;
 
-export default async function Home(
-  url: any,
-  city: any,
-  region: any,
-  country: any,
-  cityNickname: any
-) {
+export default async function Home(url: any) {
   const profileData = await getGithubProfile(yourGithubUsername);
-
   const geo = url.searchParams;
 
-  console.log(geo)
+  if (!profileData) {
+    return <EmptyState />;
+  }
 
-  const getContent = () => {
-    if (!profileData) {
-      return <EmptyState />;
-    }
-    if (profileData === "not-found") {
-      return <NotFound username={yourGithubUsername} />;
-    }
-    return <Profile username={yourGithubUsername} geo={geo} />;
-  };
+  if (profileData === "not-found") {
+    return <NotFound username={yourGithubUsername} />;
+  }
 
-  return getContent();
+  return <Profile username={yourGithubUsername} geo={geo} />;
 }

@@ -28,10 +28,7 @@ export async function middleware(req: NextRequest) {
     return NextResponse.rewrite(req.nextUrl);
   }
 
-  // const ip = "68.173.59.125";
-  // const ip = "66.222.94.249" //debug
-  // const ip = headersList.get("x-forwarded-for");
-  const ipCheckUrl = "http://ip-api.com/json/" + ip;
+  const ipCheckUrl = `http://ip-api.com/json/${ip}`;
   const response = await fetch(ipCheckUrl);
   const geoIp = await response.json();
   const cityNickname = getNickname(geoIp.city);

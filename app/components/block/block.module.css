@@ -7,6 +7,16 @@
     font-weight: 600;
   }
 
+
+  code {
+    font-family: var(--font-geist-mono);
+    font-weight: 500;
+    font-size: 0.95em;
+    border: 1px solid hsla(0, 0%, 50%, 0.4);
+    border-radius: 0.4em;
+    padding: 0 0.2em;
+  }
+
   h3 {
     font-size: 2rem;
     letter-spacing: -0.04em;

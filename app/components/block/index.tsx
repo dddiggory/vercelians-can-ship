@@ -19,8 +19,10 @@ export function Block({
   variant = "subtle",
 }: PropsWithChildren<BlockProps>) {
   return (
-    <div className={clsx(styles.block, variant && styles[variant], className)}>
+    <section
+      className={clsx(styles.block, variant && styles[variant], className)}
+    >
       {children}
-    </div>
+    </section>
   );
 }
