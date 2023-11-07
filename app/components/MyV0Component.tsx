@@ -1,5 +1,6 @@
 // you can overwrite this entire file with your v0 Component.
 // just copy and paste over all of it.
+// be sure to `export default` at the end.
 
 import Link from "next/link";
 import React from "react";
@@ -13,6 +14,7 @@ function TestComponent() {
         height: "100%",
         justifyContent: "space-between",
         flexDirection: "column",
+        width: "100%",
       }}
     >
       <h3

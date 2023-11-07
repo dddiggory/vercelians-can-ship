@@ -1,6 +1,6 @@
 import {getGithubProfile} from "@/lib/get-github-profile";
 import {Block} from "../block";
-import styles from "./main-content.module.css";
+import styles from "./profile.module.css";
 import Image from "next/image";
 import Link from "next/link";
 import {Topography} from "./topography";
@@ -16,7 +16,7 @@ import {
 import MyV0Component from "../MyV0Component";
 import {handleDate} from "@/lib/utils";
 
-export async function MainContent({
+export async function Profile({
   username,
   geo,
 }: {
@@ -49,7 +49,6 @@ export async function MainContent({
       <Block className={styles.header} variant="medium-gray">
         <h1 className={styles.title}>
           <span>Welcome to the Vercelian profile page of </span>
-          {/* TODO: handle big names */}
           <strong>
             {firstName}
             <br />
@@ -111,21 +110,23 @@ export async function MainContent({
             </p>
           )}
         </div>
-        <p className={styles.details}>
-          Via{" "}
-          <Link
-            href="https://nextjs.org/docs/app/building-your-application/routing/middleware"
-            target="_blank"
-          >
-            Next.js Middleware
-          </Link>
-          .
-          <br />
-          {cityNickname && cityNickname !== "undefined"
-            ? "Refresh the page to generate a fresh nickname."
-            : `We don't have a fun nickname on file for ${city}, but I'm sure
+        {city && city !== "undefined" ? (
+          <p className={styles.details}>
+            Via{" "}
+            <Link
+              href="https://nextjs.org/docs/app/building-your-application/routing/middleware"
+              target="_blank"
+            >
+              Next.js Middleware
+            </Link>
+            .
+            <br />
+            {cityNickname && cityNickname !== "undefined"
+              ? "Refresh the page to generate a fresh nickname."
+              : `We don't have a fun nickname on file for ${city}, but I'm sure
             it's lovely :)`}
-        </p>
+          </p>
+        ) : null}
       </Block>
 
       <Block className={styles.info}>
