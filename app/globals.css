@@ -3,26 +3,85 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  /* --background-start-rgb: 255, 247, 232; */
-  --background-start-rgb: 227, 239, 252;
-  --background-end-rgb: 255, 255, 255;
+  font-size: clamp(12px, 0.9vw, 18px);
+
+  @media (max-aspect-ratio: 1 / 2) {
+    font-size: clamp(14px, 1.2vw, 18px);
+  }
+
+  @media (max-width: 1024px) {
+    font-size: clamp(10px, 1.5vw, 18px);
+  }
+
+  @media (max-width: 700px) {
+    font-size: 2.5vw;
+  }
+
+  --background: hsla(0, 0%, 100%, 1);
+
+  --gray-600: hsla(0, 0%, 66%);
+  --gray-900: hsla(0, 0%, 40%);
+  --gray-1000: hsla(0, 0%, 9%);
+
+  --gray-alpha-100: rgba(0, 0, 0, 0.05);
+  --gray-alpha-200: hsla(0, 0%, 0%, 0.08);
+  --gray-alpha-300: hsla(0, 0%, 0%, 0.1);
+
+  --teal-200: hsla(167, 70%, 94%);
+  --teal-500: hsla(170, 70%, 72%);
+  --teal-600: hsla(170, 70%, 57%);
+  --teal-700: hsla(173, 80%, 36%);
+  --teal-900: hsla(174, 91%, 25%);
+
+  --purple-100: hsla(276, 100%, 97%);
+  --purple-600: hsla(273, 72%, 73%);
+  --purple-700: hsla(272, 51%, 54%);
+  --purple-900: hsla(274, 71%, 43%);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 159, 168, 191;
+    --background: hsla(0, 0%, 4%, 1);
+
+    --gray-600: hsla(0, 0%, 53%);
+    --gray-900: hsla(0, 0%, 63%);
+    --gray-1000: hsla(0, 0%, 93%);
+
+    --gray-alpha-100: rgba(255, 255, 255, 0.06);
+    --gray-alpha-200: hsla(0, 0%, 100%, 0.09);
+    --gray-alpha-300: hsla(0, 0%, 100%, 0.13);
+
+    --teal-200: hsla(170, 74%, 9%);
+    --teal-500: hsla(172, 85%, 20%);
+    --teal-600: hsla(172, 85%, 32%);
+    --teal-700: hsla(173, 80%, 36%);
+    --teal-900: hsla(174, 90%, 41%);
+
+    --purple-100: hsla(283, 30%, 12%);
+    --purple-600: hsla(272, 51%, 54%);
+    --purple-700: hsla(272, 51%, 54%);
+    --purple-900: hsla(275, 80%, 71%);
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--gray-1000);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }

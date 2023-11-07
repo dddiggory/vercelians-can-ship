@@ -1,0 +1,116 @@
+.block {
+  border-radius: 1.5rem;
+  padding: 2.25rem;
+  display: flex;
+
+  strong {
+    font-weight: 600;
+  }
+
+
+  code {
+    font-family: var(--font-geist-mono);
+    font-weight: 500;
+    font-size: 0.95em;
+    border: 1px solid hsla(0, 0%, 50%, 0.4);
+    border-radius: 0.4em;
+    padding: 0 0.2em;
+  }
+
+  h3 {
+    font-size: 2rem;
+    letter-spacing: -0.04em;
+    line-height: 1.25;
+  }
+
+  a {
+    text-decoration: underline;
+    text-underline-position: under;
+    font-weight: 500;
+    transition: opacity 0.2s;
+
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+
+  &.light-gray {
+    background: var(--gray-alpha-100);
+    color: var(--gray-900);
+
+    a,
+    strong {
+      color: var(--gray-1000);
+    }
+
+    svg {
+      path {
+        fill: var(--gray-600);
+      }
+    }
+  }
+
+  &.medium-gray {
+    background-color: var(--gray-alpha-300);
+    color: var(--gray-900);
+
+    a,
+    strong {
+      color: var(--gray-1000);
+    }
+  }
+
+  &.subtle {
+    outline: 3px solid var(--gray-alpha-200);
+    outline-offset: -3px;
+    color: var(--gray-900);
+
+    a,
+    strong {
+      color: var(--gray-1000);
+    }
+
+    svg {
+      path {
+        fill: var(--gray-900);
+      }
+    }
+  }
+
+  &.inverted {
+    background: var(--gray-1000);
+    color: var(--background);
+  }
+
+  &.green {
+    background-color: var(--teal-200);
+    color: var(--teal-700);
+
+    a,
+    strong {
+      color: var(--teal-900);
+    }
+
+    svg {
+      path {
+        fill: var(--teal-600);
+      }
+    }
+  }
+
+  &.purple {
+    background: var(--purple-100);
+    color: var(--purple-700);
+
+    a,
+    strong {
+      color: var(--purple-900);
+    }
+
+    svg {
+      path {
+        fill: var(--purple-600);
+      }
+    }
+  }
+}
