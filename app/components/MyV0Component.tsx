@@ -1,6 +1,5 @@
 // you can overwrite this entire file with your v0 Component.
-// just copy and paste over all of it.
-// be sure to `export default` at the end.
+// just copy and paste the "React" output over the entire file.
 
 import Link from "next/link";
 import React from "react";
