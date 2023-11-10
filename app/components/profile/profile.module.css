@@ -228,13 +228,15 @@
 .v0 {
   grid-column: 2 / span 2;
   display: block;
-  min-height: 228.75px;
-  max-height: 228.75x;
+  /* min-height: 228.75px; */
+  max-height: 100%;
+  aspect-ratio: 1/0.484;
   overflow-y: auto;
 
   @media (max-width: 700px) {
     min-height: 228.75px;
     max-height: 500px;
+    aspect-ratio: auto;
     overflow-y: auto;
     grid-column: 1 / span 2;
 
