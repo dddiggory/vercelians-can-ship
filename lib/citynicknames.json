@@ -30,5 +30,10 @@
     "Dortmund": ["The Green Metropolis", "The Beer City"],
     "Essen": ["The Shopping City", "The Energy Capital"],
     "Leipzig": ["The New Berlin", "The City of Music", "The Little Paris"],
-    "Twin Falls": ["The Niagara of the West", "The City of Waterfalls", "Apparently Where The WeWork VPN Resolves To", "The City by the Bay", "Fog City", "SF", "The Golden Gate City", "San Fran (just kidding)", "Frisco (just kidding)", "The Paris of the West", "The City", "The City that Knows How", "The City of Gold", "Golden City", "The Innovation Capital of the World", "The Foggy City", "The Cool, Grey City of Love", "The Microclimate Metropolis", "The Jewel City", "Everybody's Favorite City", "The Seven-by-Seven", "The City of Bridges", "The City of Hills", "The City of Neighborhoods", "The Earthquake City", "Home of the Giants", "The Tech Capital", "Silicon City", "The Yay Area", "The 415", "The City of the Golden Gates"]
+    "Twin Falls": ["The Niagara of the West", "The City of Waterfalls", "Apparently Where The WeWork VPN Resolves To", "The City by the Bay", "Fog City", "SF", "The Golden Gate City", "San Fran (just kidding)", "Frisco (just kidding)", "The Paris of the West", "The City", "The City that Knows How", "The City of Gold", "Golden City", "The Innovation Capital of the World", "The Foggy City", "The Cool, Grey City of Love", "The Microclimate Metropolis", "The Jewel City", "Everybody's Favorite City", "The Seven-by-Seven", "The City of Bridges", "The City of Hills", "The City of Neighborhoods", "The Earthquake City", "Home of the Giants", "The Tech Capital", "Silicon City", "The Yay Area", "The 415", "The City of the Golden Gates"],
+    "Sydney": ["Sunny Syd", "Sailor's Delight", "The Glittering Harbour", "Koala Capital"],
+    "Melbourne": ["Melbournian Maze", "Hipster's Haven", "Coffee Capital", "Artistic Alley"],
+    "Kyoto": ["Kimono City", "Zen Zone", "Sakura Spirit", "Geisha Gateway"],
+    "Osaka": ["Octopus Ball Oasis", "Neon Nippon", "Castle Town", "Comedy Capital"],
+    "Pune": ["Poona Paradise", "Techie's Turf", "Student City", "History Hub"]
 }
