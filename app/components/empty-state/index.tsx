@@ -1,6 +1,6 @@
-import Link from 'next/link';
-import { Block } from '../block';
-import styles from './empty-state.module.css';
+import Link from "next/link";
+import {Block} from "../block";
+import styles from "./empty-state.module.css";
 
 export function EmptyState() {
   return (
@@ -11,7 +11,7 @@ export function EmptyState() {
       </Block>
       <Block>
         <p>
-          Start by visiting the{' '}
+          Start by visiting the{" "}
           <Link
             href="https://github.com/dddiggory/vercelians-can-ship#welcome-vercelian"
             target="_blank"
@@ -24,7 +24,7 @@ export function EmptyState() {
       </Block>
       <Block>
         <p>
-          For some personalized starter content, go to <code>app/page.tsx</code>{' '}
+          For some personalized starter content, go to <code>app/page.tsx</code>{" "}
           and insert your GitHub username into the slot on Line 1.
         </p>
       </Block>
