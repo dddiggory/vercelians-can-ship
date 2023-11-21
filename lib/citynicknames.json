@@ -38,5 +38,7 @@
     "Osaka": ["Octopus Ball Oasis", "Neon Nippon", "Castle Town", "Comedy Capital"],
     "Pune": ["Poona Paradise", "Techie's Turf", "Student City", "History Hub"],
     "Ann Arbor": ["A2", "Tree Town", "The People's Republic of Ann Arbor", "Ace Deuce", "The Deuce", "Big House City", "Arbor Town", "A-Squared", "Ann Arbour", "A2 City"],
-    "Sunnyvale": ["Techie Town", "Sunshine City", "Silicon Suburb", "Gadget Garden"]
+    "Sunnyvale": ["Techie Town", "Sunshine City", "Silicon Suburb", "Gadget Garden"],
+    "Toronto": ["The 6", "The Big Smoke", "T.O.", "Toronto the Good"],
+    "Brisbane": ["Brissie Beauty", "River City Gem", "The Sunshine Metropolis", "Queensland's Crown", "The Subtropical Paradise", "Gateway to the Gold Coast", "The Moreton Bay Beacon", "Kangaroo Capital", "The Story Bridge Star", "The Jacaranda Jewel"]
 }
