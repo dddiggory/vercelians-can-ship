@@ -1,6 +1,6 @@
-// @ts-nocheck
-import {NextRequest, NextResponse} from "next/server";
-import {headers} from "next/headers";
+import { NextRequest, NextResponse } from "next/server";
+import { ipAddress, geolocation } from "@vercel/functions";
+import { headers } from "next/headers";
 
 import countries from "./lib/countries.json";
 import cityNicknames from "./lib/citynicknames.json";
@@ -19,10 +19,9 @@ function getNickname(city: string) {
 }
 
 export async function middleware(req: NextRequest) {
-  const headersList = headers();
+  const headersList = await headers();
 
-  const ip =
-    headersList.get("x-forwarded-for") || req?.ip || req?.socket?.remoteAddress;
+  const ip = headersList.get("x-forwarded-for") || ipAddress(req);
 
   if (!ip) {
     return NextResponse.rewrite(req.nextUrl);

@@ -7,11 +7,10 @@ import { getGithubProfile } from "./lib/get-github-profile";
 
 const yourGithubUsername = "";
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
+export default async function Home(props: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
+  const searchParams = await props.searchParams;
   const profileData = await getGithubProfile(yourGithubUsername);
 
   if (!profileData) {
