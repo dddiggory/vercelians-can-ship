@@ -44,7 +44,7 @@
     "date-fns": "^2.30.0",
     "geist": "^1.0.0",
     "lucide-react": "^0.287.0",
-    "next": "14.0.1",
+    "next": "14.2.35",
     "postcss": "^8.4.31",
     "react": "^18.2.0",
     "react-day-picker": "^8.8.2",
